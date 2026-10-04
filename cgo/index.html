@@ -1,0 +1,433 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>CGO | Calibração Guiada | GO!</title>
+  <meta name="description" content="CGO, Calibração Guiada: conduz o técnico na calibração de balanças, passo a passo no tablet, do tipo de balança ao certificado com QR code. Um produto GO!.">
+  <meta name="theme-color" content="#161B20">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="CGO | Calibração Guiada">
+  <meta property="og:description" content="Calibração de balanças passo a passo no tablet. Um produto GO!.">
+  <meta property="og:image" content="https://gontechbr.github.io/og-image.png">
+
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="icon" href="../favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@800&family=Barlow+Semi+Condensed:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/produto.css">
+  <style>
+    /* Ilustração da etapa Ensaios no tablet, nas cores do site.css do app. Valores de exemplo. */
+    .cgo-stepper {
+      list-style: none;
+      margin: 0;
+      padding: 10px 14px 12px;
+      display: grid;
+      grid-template-columns: repeat(7, minmax(0, 1fr));
+      gap: 4px;
+      background: var(--p-chrome);
+      counter-reset: cgo-step;
+    }
+
+    .cgo-stepper li {
+      counter-increment: cgo-step;
+      padding-top: 8px;
+      border-top: 3px solid var(--p-chrome-3);
+      color: var(--p-chrome-muted);
+      font-size: 11px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .cgo-stepper li::before {
+      content: counter(cgo-step) " ";
+      font-weight: 700;
+    }
+
+    .cgo-stepper li.done {
+      border-top-color: #A3ADB6;
+      color: #D7DCE1;
+    }
+
+    .cgo-stepper li.now {
+      border-top-color: var(--p-accent);
+      color: #FFFFFF;
+      font-weight: 700;
+    }
+
+    .cgo-body {
+      display: grid;
+      grid-template-columns: minmax(0, 1.2fr) minmax(0, 1fr);
+      gap: 14px;
+      padding: 16px;
+      background: #EDF0F3;
+      color: #1C232A;
+    }
+
+    .cgo-kicker {
+      font-family: var(--p-display);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #505B65;
+    }
+
+    .cgo-instruction {
+      margin-top: 6px;
+      font-family: var(--p-display);
+      font-size: 26px;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    .cgo-instruction b {
+      color: #CC4E0B;
+    }
+
+    .cgo-lcd {
+      margin-top: 14px;
+      padding: 12px 14px;
+      border-radius: 10px;
+      background: #0B0F13;
+      color: #FFB547;
+      font-family: Consolas, 'Cascadia Mono', monospace;
+      font-size: 34px;
+      font-weight: 700;
+      text-align: right;
+      letter-spacing: 0.02em;
+    }
+
+    .cgo-lcd small {
+      display: block;
+      font-size: 11px;
+      font-weight: 400;
+      color: #A3ADB6;
+      text-align: left;
+      letter-spacing: 0;
+    }
+
+    .cgo-serial {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 10px;
+      color: #16833A;
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    .cgo-serial::before {
+      content: "";
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #16833A;
+    }
+
+    /* Prato visto de cima com as 5 posições da excentricidade. */
+    .cgo-plate {
+      position: relative;
+      aspect-ratio: 1;
+      border-radius: 10px;
+      border: 2px solid #1C232A;
+      background: #FFFFFF;
+    }
+
+    .cgo-plate i {
+      position: absolute;
+      display: grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      margin: -15px 0 0 -15px;
+      border-radius: 50%;
+      border: 2px solid #A3ADB6;
+      background: #F5F7F9;
+      color: #505B65;
+      font-style: normal;
+      font-weight: 700;
+      font-size: 13px;
+    }
+
+    .cgo-plate i.done {
+      border-color: #16833A;
+      color: #16833A;
+    }
+
+    .cgo-plate i.now {
+      border-color: #CC4E0B;
+      background: #FFF1E8;
+      color: #CC4E0B;
+    }
+
+    .cgo-actions {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 6px;
+      margin-top: 10px;
+    }
+
+    .cgo-actions span {
+      padding: 7px 0;
+      border-radius: 8px;
+      background: #FFFFFF;
+      text-align: center;
+      font-weight: 700;
+      font-size: 12px;
+      color: #505B65;
+    }
+
+    .cgo-actions span.on {
+      background: #CC4E0B;
+      color: #FFFFFF;
+    }
+
+    @media (max-width: 640px) {
+      .cgo-body {
+        grid-template-columns: 1fr;
+      }
+
+      .cgo-plate {
+        max-width: 200px;
+      }
+
+      .cgo-stepper li {
+        font-size: 0;
+      }
+
+      .cgo-stepper li::before {
+        font-size: 11px;
+      }
+    }
+  </style>
+</head>
+<body class="produto produto-cgo">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="go-logo header-logo" href="../" aria-label="GO!, página inicial">GO<span class="go-bang">!</span></a>
+      <nav class="header-nav" aria-label="Menu principal">
+        <a class="header-link" href="../#produtos">Produtos</a>
+        <a class="header-link" href="../#sob-medida">Sob medida</a>
+        <a class="header-link" href="#contato">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="p-hero">
+      <div class="container p-hero-grid">
+        <div>
+          <p class="p-crumb"><a href="../#produtos">Produtos</a> / CGO</p>
+          <h1 class="p-title">
+            <img class="p-title-icon" src="../assets/produtos/cgo-icone.svg" alt="" width="64" height="64">
+            CGO
+          </h1>
+          <p class="p-fullname">Calibração Guiada</p>
+          <p class="p-lead">
+            Para laboratórios e assistências que calibram balanças. O app conduz o técnico passo a
+            passo no tablet, faz as contas, confere os limites e manda o resultado para a aprovação
+            do Gerente Técnico.
+          </p>
+          <div class="p-actions">
+            <a class="p-button" href="mailto:guilherme.oliveira@gontech.com?subject=Demonstra%C3%A7%C3%A3o%20da%20Calibra%C3%A7%C3%A3o%20Guiada">
+              Pedir uma demonstração
+              <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a class="p-ghost" href="#etapas">Ver as etapas</a>
+          </div>
+        </div>
+
+        <figure class="p-shot" aria-labelledby="cgo-shot-legenda">
+          <div class="p-window">
+            <div class="p-window-bar">
+              <img src="../assets/produtos/cgo-icone.svg" alt="" width="18" height="18">
+              Calibração Guiada
+              <span class="p-window-where">Ensaios</span>
+            </div>
+            <ol class="cgo-stepper" aria-hidden="true">
+              <li class="done">Tipo</li>
+              <li class="done">Balança</li>
+              <li class="done">Padrões</li>
+              <li class="done">Preparação</li>
+              <li class="now">Ensaios</li>
+              <li>Ambiente final</li>
+              <li>Resultado</li>
+            </ol>
+            <div class="cgo-body">
+              <div>
+                <p class="cgo-kicker">Excentricidade, posição 3 de 5</p>
+                <p class="cgo-instruction">Colocar <b>10 kg</b> na posição 3</p>
+                <div class="cgo-lcd"><small>Leitura da balança</small>10,000 kg</div>
+                <span class="cgo-serial">Balança conectada</span>
+              </div>
+              <div>
+                <div class="cgo-plate" aria-hidden="true">
+                  <i class="done" style="left: 50%; top: 50%">1</i>
+                  <i class="done" style="left: 22%; top: 22%">2</i>
+                  <i class="now" style="left: 78%; top: 22%">3</i>
+                  <i style="left: 78%; top: 78%">4</i>
+                  <i style="left: 22%; top: 78%">5</i>
+                </div>
+                <div class="cgo-actions" aria-hidden="true">
+                  <span>Retirar</span>
+                  <span class="on">Colocar</span>
+                  <span>Manter</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <figcaption id="cgo-shot-legenda">Ilustração da etapa Ensaios no tablet, com valores de exemplo.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="p-section" id="etapas" aria-labelledby="etapas-titulo">
+      <div class="container">
+        <h2 id="etapas-titulo">Sete etapas, na ordem</h2>
+        <p class="p-section-intro">O técnico só avança quando a etapa está completa. Os cálculos seguem o DOC-Cgcre-097 e o EURAMET Calibration Guide nº 18.</p>
+        <ol class="p-steps" style="--step-count: 7">
+          <li class="p-step">
+            <h3>Tipo</h3>
+            <p>Quem calibra e o receptor de carga: prato quadrado, redondo ou rodoviária.</p>
+          </li>
+          <li class="p-step">
+            <h3>Balança</h3>
+            <p>Máx, e e unidade. O app calcula a classe, o Min e a tolerância.</p>
+          </li>
+          <li class="p-step">
+            <h3>Padrões</h3>
+            <p>Classe mínima dos pesos, jogos e peças de cada carga.</p>
+          </li>
+          <li class="p-step">
+            <h3>Preparação</h3>
+            <p>Checklist com tempos de estabilização cronometrados e ambiente inicial.</p>
+          </li>
+          <li class="p-step">
+            <h3>Ensaios</h3>
+            <p>Excentricidade em 5 posições, erro de indicação de Min a 100% e repetibilidade.</p>
+          </li>
+          <li class="p-step">
+            <h3>Ambiente final</h3>
+            <p>Temperatura, umidade e pressão. Fora do limite, a calibração fica inválida.</p>
+          </li>
+          <li class="p-step">
+            <h3>Resultado</h3>
+            <p>Correção, incerteza U (k = 2) e tolerância. Assinatura e aprovação.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="p-section" aria-labelledby="funcoes-titulo">
+      <div class="container">
+        <h2 id="funcoes-titulo">Além da calibração</h2>
+        <ul class="p-features">
+          <li class="p-feature">
+            <h3>Na bancada</h3>
+            <ul>
+              <li>Leitura direta da balança pelo cabo serial, sem digitar a indicação</li>
+              <li>Modo foco que diz o que retirar, colocar ou manter no prato</li>
+              <li>Fotos em cada momento da calibração</li>
+              <li>Funciona sem internet e instala no tablet</li>
+            </ul>
+          </li>
+          <li class="p-feature">
+            <h3>Documentos</h3>
+            <ul>
+              <li>Relatório em PDF A4</li>
+              <li>Etiqueta com QR code (60 × 40, 50 × 30 ou 100 × 50 mm)</li>
+              <li>Certificado aberto pelo QR, com código de verificação</li>
+              <li>Comparação com a calibração anterior da mesma balança</li>
+            </ul>
+          </li>
+          <li class="p-feature">
+            <h3>Clientes</h3>
+            <ul>
+              <li>Clientes e as balanças de cada um</li>
+              <li>Agenda de recalibração com aviso por WhatsApp ou e-mail</li>
+              <li>Área do cliente, só de leitura, para o dono da balança</li>
+            </ul>
+          </li>
+          <li class="p-feature">
+            <h3>Laboratório</h3>
+            <ul>
+              <li>Pesos-padrão, termobarohigrômetros e técnicos</li>
+              <li>Treinamento com prova do procedimento em três níveis e matriz de qualificação</li>
+              <li>Não conformidades, conforme a ISO 17025</li>
+            </ul>
+          </li>
+          <li class="p-feature">
+            <h3>Estatísticas</h3>
+            <ul>
+              <li>Cp e Cpk, histograma e rankings</li>
+              <li>Calibrações no mês, conformidade e recalibrações</li>
+              <li>Exportação em CSV</li>
+            </ul>
+          </li>
+          <li class="p-feature">
+            <h3>Integração</h3>
+            <ul>
+              <li>Calibrações aprovadas vão sozinhas para o <a href="../gqb/">GQB</a> do cliente</li>
+              <li>Cada empresa com a própria marca</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="p-section" aria-labelledby="quem-usa-titulo">
+      <div class="container">
+        <h2 id="quem-usa-titulo">Quem usa</h2>
+        <table class="p-table">
+          <tbody>
+            <tr><th scope="row">Técnico</th><td>Faz a calibração no tablet, guiado etapa por etapa.</td></tr>
+            <tr><th scope="row">Gerente Técnico</th><td>Revisa, assina e aprova o resultado.</td></tr>
+            <tr><th scope="row">Dono da balança</th><td>Acompanha calibrações e certificados pela Área do cliente.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="p-section" aria-labelledby="outros-titulo">
+      <div class="container">
+        <h2 id="outros-titulo">Outros produtos da GO!</h2>
+        <ul class="p-related">
+          <li><a href="../sgo/"><img src="../assets/produtos/sgo-icone-verde.svg" alt=""><span><strong>SGO</strong><span>Sistema de Gestão Operacional</span></span></a></li>
+          <li><a href="../gqb/"><img src="../assets/produtos/gqb-icone.svg" alt=""><span><strong>GQB</strong><span>Gestor de Qualidade de Balanças</span></span></a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="p-cta" id="contato" aria-labelledby="contato-titulo">
+      <div class="container">
+        <h2 id="contato-titulo">Quer ver uma calibração guiada?</h2>
+        <p>Mande um e-mail contando que tipo de balança o laboratório calibra. A gente marca uma demonstração no tablet.</p>
+        <div class="p-actions">
+          <a class="p-button" href="mailto:guilherme.oliveira@gontech.com?subject=Demonstra%C3%A7%C3%A3o%20da%20Calibra%C3%A7%C3%A3o%20Guiada">
+            Pedir uma demonstração
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="p-ghost" href="mailto:guilherme.oliveira@gontech.com">guilherme.oliveira@gontech.com</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span class="p-signature">um produto <span class="go-logo">GO<span class="go-bang">!</span></span></span>
+      <span>&copy; <span data-year>2026</span> GO!</span>
+    </div>
+  </footer>
+
+  <script src="../js/main.js" defer></script>
+</body>
+</html>

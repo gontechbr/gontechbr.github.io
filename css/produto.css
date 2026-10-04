@@ -1,0 +1,507 @@
+/* Páginas de produto. Carregar depois de styles.css.
+   O cabeçalho e o rodapé são os do site da GO!. O miolo usa a cor e as fontes de cada app,
+   definidas nas classes .produto-sgo, .produto-gqb e .produto-cgo, com os valores tirados do
+   CSS de cada app. */
+
+.produto-sgo {
+  --p-accent: #0A9E64;
+  --p-accent-text: #0F1114;
+  --p-accent-soft: #E3F4EC;
+  --p-chrome: #0F1114;
+  --p-chrome-2: #171A1F;
+  --p-chrome-3: #1E2228;
+  --p-chrome-line: #2A2F37;
+  --p-chrome-text: #E4E7EC;
+  --p-chrome-muted: #8B94A1;
+  --p-bg: #F4F5F7;
+  --p-text: #20252C;
+  --p-muted: #5F6874;
+  --p-display: 'Barlow Condensed', 'Hanken Grotesk', Arial, sans-serif;
+  --p-body: 'Hanken Grotesk', Arial, sans-serif;
+}
+
+.produto-gqb {
+  --p-accent: #1F5F99;
+  --p-accent-text: #FFFFFF;
+  --p-accent-soft: #E9EFF5;
+  --p-chrome: #1B2228;
+  --p-chrome-2: #272D33;
+  --p-chrome-3: #323940;
+  --p-chrome-line: #3A434C;
+  --p-chrome-text: #FFFFFF;
+  --p-chrome-muted: #A9B3BD;
+  --p-bg: #EDF0F3;
+  --p-text: #1C232A;
+  --p-muted: #505B65;
+  --p-display: 'Bahnschrift', 'DIN Alternate', 'Barlow Semi Condensed', Arial, sans-serif;
+  --p-body: 'Segoe UI Variable Text', 'Segoe UI', system-ui, Roboto, Arial, sans-serif;
+}
+
+.produto-cgo {
+  --p-accent: #E8590C;
+  --p-accent-text: #FFFFFF;
+  --p-accent-button: #CC4E0B;
+  --p-accent-soft: #FFF1E8;
+  --p-chrome: #161B20;
+  --p-chrome-2: #1D242B;
+  --p-chrome-3: #2A3540;
+  --p-chrome-line: #3A4855;
+  --p-chrome-text: #FFFFFF;
+  --p-chrome-muted: #A3ADB6;
+  --p-bg: #EDF0F3;
+  --p-text: #1C232A;
+  --p-muted: #505B65;
+  --p-display: 'Bahnschrift', 'DIN Alternate', 'Barlow Semi Condensed', Arial, sans-serif;
+  --p-body: 'Segoe UI Variable Text', 'Segoe UI', system-ui, Roboto, Arial, sans-serif;
+}
+
+.produto main {
+  background: var(--p-bg);
+  color: var(--p-text);
+  font-family: var(--p-body);
+}
+
+.produto main h1,
+.produto main h2,
+.produto main h3 {
+  font-family: var(--p-display);
+  letter-spacing: 0;
+}
+
+.produto .site-header,
+.produto .site-footer {
+  font-family: var(--go-fonte-texto);
+}
+
+/* Topo escuro com o texto à esquerda e a ilustração da tela à direita. */
+.p-hero {
+  background: var(--p-chrome);
+  color: var(--p-chrome-text);
+  padding: 72px 0 88px;
+  overflow: hidden;
+}
+
+.p-hero-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.15fr);
+  gap: 56px;
+  align-items: center;
+}
+
+.p-crumb {
+  font-size: 14px;
+  color: var(--p-chrome-muted);
+  margin-bottom: 28px;
+}
+
+.p-crumb a {
+  color: var(--p-chrome-muted);
+  text-decoration: none;
+  border-bottom: 1px solid var(--p-chrome-line);
+}
+
+.p-crumb a:hover {
+  color: var(--p-chrome-text);
+}
+
+.p-title {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+.p-title img {
+  display: block;
+}
+
+.p-title-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 14px;
+}
+
+.p-hero h1 {
+  font-size: clamp(56px, 8vw, 88px);
+  font-weight: 700;
+  line-height: 0.95;
+  max-width: none;
+}
+
+.p-fullname {
+  margin-top: 16px;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--p-chrome-muted);
+}
+
+.p-lead {
+  margin-top: 28px;
+  max-width: 520px;
+  font-size: 19px;
+  line-height: 1.55;
+  color: var(--p-chrome-text);
+}
+
+.p-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px 20px;
+  align-items: center;
+  margin-top: 36px;
+}
+
+.p-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 22px;
+  border-radius: 8px;
+  background: var(--p-accent-button, var(--p-accent));
+  color: var(--p-accent-text);
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.p-button:hover,
+.p-button:focus-visible {
+  filter: brightness(1.08);
+}
+
+.p-ghost {
+  color: var(--p-chrome-text);
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 2px solid var(--p-accent);
+  padding-bottom: 2px;
+}
+
+/* Moldura da ilustração: parece uma janela do app, sem sombra nem brilho. */
+.p-shot {
+  margin: 0;
+}
+
+.p-window {
+  border-radius: 14px;
+  overflow: hidden;
+  border: 1px solid var(--p-chrome-line);
+  background: var(--p-chrome-2);
+  font-family: var(--p-body);
+  font-size: 13px;
+  line-height: 1.35;
+}
+
+.p-window-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 14px;
+  background: var(--p-chrome-3);
+  color: var(--p-chrome-text);
+  font-weight: 700;
+}
+
+.p-window-bar img {
+  height: 18px;
+  width: auto;
+}
+
+.p-window-bar .p-window-where {
+  margin-left: auto;
+  font-weight: 400;
+  color: var(--p-chrome-muted);
+}
+
+.p-shot figcaption {
+  margin-top: 12px;
+  font-size: 13px;
+  color: var(--p-chrome-muted);
+}
+
+.p-section {
+  padding: 88px 0;
+}
+
+.p-section + .p-section {
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.p-section h2 {
+  font-size: clamp(32px, 4.5vw, 48px);
+  font-weight: 700;
+  line-height: 1.05;
+}
+
+.p-section-intro {
+  margin-top: 16px;
+  max-width: 640px;
+  font-size: 18px;
+  color: var(--p-muted);
+}
+
+/* Funcionalidades em grupos, em colunas com fio no topo (sem cartão). */
+.p-features {
+  list-style: none;
+  padding: 0;
+  margin: 48px 0 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 40px 36px;
+}
+
+.p-feature {
+  border-top: 2px solid var(--p-text);
+  padding-top: 18px;
+}
+
+.p-feature h3 {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 22px;
+  font-weight: 700;
+}
+
+.p-feature h3::before {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 3px;
+  background: var(--feature-color, var(--p-accent));
+  flex: none;
+}
+
+.p-feature ul {
+  margin: 12px 0 0;
+  padding-left: 18px;
+  color: var(--p-muted);
+}
+
+.p-feature li + li {
+  margin-top: 6px;
+}
+
+/* Passo a passo numerado em faixa horizontal. */
+.p-steps {
+  list-style: none;
+  padding: 0;
+  margin: 48px 0 0;
+  display: grid;
+  grid-template-columns: repeat(var(--step-count, 5), minmax(0, 1fr));
+  counter-reset: step;
+}
+
+.p-step {
+  counter-increment: step;
+  position: relative;
+  padding: 0 20px 0 0;
+}
+
+.p-step::before {
+  content: counter(step, decimal-leading-zero);
+  display: block;
+  font-family: var(--p-display);
+  font-weight: 700;
+  font-size: 40px;
+  line-height: 1;
+  color: var(--p-accent);
+}
+
+.p-step::after {
+  content: "";
+  position: absolute;
+  top: 20px;
+  left: 64px;
+  right: 16px;
+  border-top: 2px dashed var(--p-accent);
+  opacity: 0.5;
+}
+
+.p-step:last-child::after {
+  display: none;
+}
+
+.p-step h3 {
+  margin-top: 16px;
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.p-step p {
+  margin-top: 8px;
+  color: var(--p-muted);
+  font-size: 15px;
+}
+
+.p-steps.p-steps-vertical {
+  grid-template-columns: 1fr;
+  gap: 28px;
+  margin-top: 36px;
+}
+
+.p-steps-vertical .p-step::after {
+  display: none;
+}
+
+/* Perfis e detalhes em tabela de duas colunas. */
+.p-table {
+  width: 100%;
+  margin-top: 40px;
+  border-collapse: collapse;
+  border-top: 2px solid var(--p-text);
+}
+
+.p-table th,
+.p-table td {
+  text-align: left;
+  vertical-align: top;
+  padding: 16px 16px 16px 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.p-table th {
+  width: 32%;
+  font-family: var(--p-display);
+  font-size: 19px;
+  font-weight: 700;
+}
+
+.p-table td {
+  color: var(--p-muted);
+}
+
+.p-split {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: 56px;
+}
+
+.p-note {
+  margin-top: 24px;
+  padding-left: 16px;
+  border-left: 3px solid var(--p-accent);
+  color: var(--p-muted);
+}
+
+/* Outros produtos da GO!. */
+.p-related {
+  list-style: none;
+  padding: 0;
+  margin: 32px 0 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 0;
+  border-top: 2px solid var(--p-text);
+}
+
+.p-related a {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  padding: 20px 20px 20px 0;
+  text-decoration: none;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+}
+
+.p-related img {
+  width: 44px;
+  height: 44px;
+  border-radius: 10px;
+}
+
+.p-related strong {
+  display: block;
+  font-family: var(--go-fonte-texto);
+  font-size: 20px;
+}
+
+.p-related span {
+  color: var(--p-muted);
+  font-size: 15px;
+}
+
+.p-cta {
+  background: var(--p-chrome);
+  color: var(--p-chrome-text);
+  padding: 88px 0;
+}
+
+.p-cta h2 {
+  font-family: var(--p-display);
+  font-size: clamp(32px, 5vw, 52px);
+  font-weight: 700;
+  line-height: 1.05;
+}
+
+.p-cta p {
+  margin-top: 16px;
+  max-width: 560px;
+  color: var(--p-chrome-muted);
+  font-size: 18px;
+}
+
+.p-cta .p-actions {
+  margin-top: 32px;
+}
+
+/* Assinatura "um produto GO!" no rodapé das páginas de produto. */
+.p-signature {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 8px;
+}
+
+.p-signature .go-logo {
+  font-size: 18px;
+  color: var(--go-claro);
+}
+
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+@media (max-width: 960px) {
+  .p-hero-grid,
+  .p-split {
+    grid-template-columns: 1fr;
+  }
+
+  .p-features {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .p-steps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 36px 0;
+  }
+
+  .p-step::after {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .p-hero {
+    padding: 48px 0 64px;
+  }
+
+  .p-features,
+  .p-steps,
+  .p-related {
+    grid-template-columns: 1fr;
+  }
+
+  .p-section {
+    padding: 64px 0;
+  }
+
+  .p-table th {
+    width: 40%;
+  }
+}

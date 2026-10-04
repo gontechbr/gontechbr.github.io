@@ -3,14 +3,14 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>GO! | Software industrial</title>
-  <meta name="description" content="A GO! desenvolve sistemas sob medida para a indústria: integração com o chão de fábrica, gestão da qualidade, rastreabilidade e integração com MES e ERP.">
+  <title>GO! | Software para a operação</title>
+  <meta name="description" content="A GO! faz software para empresas que operam no campo, no laboratório e na fábrica: produtos prontos (SGO, GQB e Calibração Guiada) e projetos sob medida.">
   <meta name="theme-color" content="#0F1114">
 
   <meta property="og:type" content="website">
   <meta property="og:locale" content="pt_BR">
-  <meta property="og:title" content="GO! | Software industrial">
-  <meta property="og:description" content="Integração com o chão de fábrica, gestão da qualidade, rastreabilidade e integração com MES e ERP.">
+  <meta property="og:title" content="GO! | Software para a operação">
+  <meta property="og:description" content="Produtos prontos para gestão de serviço, qualidade e calibração de balanças, e projetos sob medida.">
   <meta property="og:image" content="https://gontechbr.github.io/og-image.png">
 
   <link rel="icon" href="favicon.ico" sizes="any">
@@ -22,34 +22,83 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@800&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/styles.css">
+  <script src="js/abertura.js"></script>
 </head>
 <body>
+  <script>GoOpening.showOncePerVisit();</script>
+
   <header class="site-header">
     <div class="container header-inner">
       <a class="go-logo header-logo" href="#inicio" aria-label="GO!, voltar ao início">GO<span class="go-bang">!</span></a>
-      <a class="header-link" href="#contato">Contato</a>
+      <nav class="header-nav" aria-label="Menu principal">
+        <a class="header-link" href="#produtos">Produtos</a>
+        <a class="header-link" href="#sob-medida">Sob medida</a>
+        <a class="header-link" href="#contato">Contato</a>
+      </nav>
     </div>
   </header>
 
   <main>
     <section class="hero" id="inicio">
       <div class="container">
-        <p class="eyebrow">Software industrial sob demanda</p>
-        <h1>Software para quem faz a linha andar<span class="go-bang">.</span></h1>
+        <p class="eyebrow">Produtos e projetos sob medida</p>
+        <h1>Software para quem faz a operação andar<span class="go-bang">.</span></h1>
         <p class="lead">
-          A GO! desenvolve sistemas sob medida para a indústria, com integração ao chão de
-          fábrica, gestão da qualidade, rastreabilidade e as ferramentas que a operação usa no dia a dia.
+          A GO! faz sistemas para empresas que trabalham no campo, no laboratório e na fábrica.
+          Alguns já estão prontos para usar. Os outros a gente desenha junto com quem vai operar.
         </p>
-        <a class="button" href="#contato">
-          Falar com a GO!
+        <a class="button" href="#produtos">
+          Ver os produtos
           <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
         </a>
       </div>
     </section>
 
-    <section class="section" id="o-que-fazemos" aria-labelledby="o-que-fazemos-titulo">
+    <section class="section" id="produtos" aria-labelledby="produtos-titulo">
       <div class="container">
-        <h2 id="o-que-fazemos-titulo">O que fazemos</h2>
+        <div class="section-head">
+          <h2 id="produtos-titulo">Produtos</h2>
+          <p class="section-intro">Apps prontos, que abrem no navegador e instalam no celular e no tablet, cada um com a marca da empresa que usa.</p>
+        </div>
+
+        <ul class="products">
+          <li class="product" style="--product-color: #0A9E64">
+            <img class="product-icon" src="assets/produtos/sgo-icone-verde.svg" alt="" width="56" height="56">
+            <div class="product-name">
+              <h3>SGO</h3>
+              <p>Sistema de Gestão Operacional</p>
+            </div>
+            <p class="product-text">Gestão de assistência técnica: atendimento com protocolo, O.S., agenda dos técnicos, orçamento na visita, vendas, financeiro e calibração.</p>
+            <a class="product-link" href="sgo/">Conhecer o SGO <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </li>
+          <li class="product" style="--product-color: #1f5f99">
+            <img class="product-icon" src="assets/produtos/gqb-icone.svg" alt="" width="56" height="56">
+            <div class="product-name">
+              <h3>GQB</h3>
+              <p>Gestor de Qualidade de Balanças</p>
+            </div>
+            <p class="product-text">O parque de balanças da empresa num lugar só: prazos de calibração e manutenção, verificações, custos e inspeção pelo QR code da etiqueta.</p>
+            <a class="product-link" href="gqb/">Conhecer o GQB <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </li>
+          <li class="product" style="--product-color: #e8590c">
+            <img class="product-icon" src="assets/produtos/cgo-icone.svg" alt="" width="56" height="56">
+            <div class="product-name">
+              <h3>CGO</h3>
+              <p>Calibração Guiada</p>
+            </div>
+            <p class="product-text">Conduz o técnico na calibração de balanças, passo a passo no tablet, da escolha da balança ao certificado com QR code.</p>
+            <a class="product-link" href="cgo/">Conhecer a Calibração Guiada <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="section section-rule" id="sob-medida" aria-labelledby="sob-medida-titulo">
+      <div class="container">
+        <div class="section-head">
+          <h2 id="sob-medida-titulo">Sob medida</h2>
+          <p class="section-intro">Quando nenhum produto pronto resolve, a gente desenvolve. Alguns exemplos do que já fazemos:</p>
+        </div>
         <ol class="services">
           <li>
             <span class="service-number" aria-hidden="true">01</span>
@@ -69,12 +118,12 @@
           <li>
             <span class="service-number" aria-hidden="true">04</span>
             <h3>Integração com MES e ERP</h3>
-            <p>Troca de dados entre o chão de fábrica e os sistemas da empresa, sem digitação repetida.</p>
+            <p>Troca de dados entre a operação e os sistemas da empresa, sem digitação repetida.</p>
           </li>
           <li>
             <span class="service-number" aria-hidden="true">05</span>
-            <h3>Sistemas para a operação</h3>
-            <p>Telas e ferramentas sob medida para o dia a dia da fábrica. O primeiro produto da GO! é o SGO (Sistema de Gestão Operacional).</p>
+            <h3>Ferramentas internas</h3>
+            <p>Telas e apps para o dia a dia de quem opera, no escritório, no campo ou na linha.</p>
           </li>
         </ol>
       </div>
@@ -85,12 +134,12 @@
         <h2 id="como-atendemos-titulo">Como atendemos</h2>
         <div class="split-text">
           <p>
-            Por demanda. Você traz o problema da linha e a gente começa pela estação: como o
-            processo roda hoje, quem opera e de onde vêm os dados.
+            Por demanda. Você traz o problema e a gente começa pelo processo: como ele roda hoje,
+            quem opera e de onde vêm os dados.
           </p>
           <p>
             Depois disso vem a proposta, o desenvolvimento e a implantação. A entrega inclui
-            documentação escrita para o time da fábrica entender e operar o sistema.
+            documentação escrita para o time entender e operar o sistema.
           </p>
         </div>
       </div>
@@ -98,8 +147,8 @@
 
     <section class="contact" id="contato" aria-labelledby="contato-titulo">
       <div class="container">
-        <h2 id="contato-titulo">Tem uma demanda na linha<span class="go-bang">?</span></h2>
-        <p class="contact-text">Conte o cenário por e-mail. A gente responde para marcar uma conversa.</p>
+        <h2 id="contato-titulo">Tem uma demanda<span class="go-bang">?</span></h2>
+        <p class="contact-text">Conte o cenário por e-mail, ou peça uma demonstração de um dos produtos. A gente responde para marcar uma conversa.</p>
         <a class="contact-email" href="mailto:guilherme.oliveira@gontech.com" data-contact="email">guilherme.oliveira@gontech.com</a>
       </div>
     </section>

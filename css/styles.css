@@ -86,6 +86,11 @@ a {
   font-size: 22px;
 }
 
+.header-nav {
+  display: flex;
+  gap: 28px;
+}
+
 .header-link {
   font-weight: 500;
   text-decoration: none;
@@ -170,6 +175,98 @@ h1 {
 
 h2 {
   font-size: clamp(28px, 4vw, 40px);
+}
+
+.section-head {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.4fr);
+  gap: 24px 48px;
+  align-items: end;
+}
+
+.section-intro {
+  color: #3A404A;
+  font-size: 18px;
+}
+
+/* Produtos lado a lado, separados por fio, cada um com a cor do próprio app numa faixa no topo. */
+.products {
+  list-style: none;
+  padding: 0;
+  margin: 48px 0 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  border-top: 2px solid var(--go-grafite);
+}
+
+.product {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  padding: 36px 28px 32px;
+  border-bottom: 1px solid var(--linha);
+}
+
+.product + .product {
+  border-left: 1px solid var(--linha);
+}
+
+.product::before {
+  content: "";
+  position: absolute;
+  top: -2px;
+  left: 0;
+  width: 56px;
+  height: 4px;
+  background: var(--product-color);
+}
+
+.product-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+}
+
+.product-name h3 {
+  font-size: 34px;
+  font-weight: 900;
+  letter-spacing: -0.02em;
+  line-height: 1;
+}
+
+.product-name p {
+  margin-top: 6px;
+  color: var(--go-cinza);
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.product-text {
+  color: #3A404A;
+  flex: 1;
+}
+
+.product-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  align-self: flex-start;
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 2px solid var(--product-color);
+  padding-bottom: 2px;
+}
+
+.product-link .icon {
+  transition: transform 150ms ease;
+}
+
+.product-link:hover .icon,
+.product-link:focus-visible .icon {
+  transform: translateX(4px);
 }
 
 /* Lista de serviços em linhas, como uma tabela, e não em cartões. */
@@ -276,9 +373,28 @@ a:focus-visible {
   outline-offset: 4px;
 }
 
+@media (max-width: 960px) {
+  .products {
+    grid-template-columns: 1fr;
+  }
+
+  .product + .product {
+    border-left: 0;
+  }
+
+  .section-head {
+    grid-template-columns: 1fr;
+  }
+}
+
 @media (max-width: 760px) {
   body {
     font-size: 16px;
+  }
+
+  .header-nav {
+    gap: 18px;
+    font-size: 15px;
   }
 
   .hero {

@@ -1,0 +1,393 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>GQB | Gestor de Qualidade de Balanças | GO!</title>
+  <meta name="description" content="GQB, Gestor de Qualidade de Balanças: prazos de calibração e manutenção, verificações, custos e inspeção pelo QR code da etiqueta. Um produto GO!.">
+  <meta name="theme-color" content="#1B2228">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="GQB | Gestor de Qualidade de Balanças">
+  <meta property="og:description" content="O parque de balanças da empresa num lugar só. Um produto GO!.">
+  <meta property="og:image" content="https://gontechbr.github.io/og-image.png">
+
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="icon" href="../favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@800&family=Barlow+Semi+Condensed:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/produto.css">
+  <style>
+    /* Ilustração do painel do GQB, nas cores do site.css do app. Números de exemplo. */
+    .gqb-panel {
+      padding: 16px;
+      background: #EDF0F3;
+      color: #1C232A;
+    }
+
+    .gqb-label {
+      font-family: var(--p-display);
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #505B65;
+    }
+
+    .gqb-action {
+      margin-top: 8px;
+      border-radius: 10px;
+      background: #FFFFFF;
+      overflow: hidden;
+    }
+
+    .gqb-action-row {
+      display: grid;
+      grid-template-columns: 64px minmax(0, 1fr) auto;
+      gap: 10px;
+      align-items: center;
+      padding: 9px 12px;
+    }
+
+    .gqb-action-row + .gqb-action-row {
+      border-top: 1px solid #E3E7EB;
+    }
+
+    .gqb-tag {
+      font-family: Consolas, 'Cascadia Mono', monospace;
+      font-weight: 700;
+    }
+
+    .gqb-where {
+      color: #505B65;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .gqb-chip {
+      padding: 2px 9px;
+      border-radius: 999px;
+      font-weight: 700;
+      font-size: 12px;
+    }
+
+    .gqb-chip-late { color: #CF2E2E; background: #FDECEC; }
+    .gqb-chip-soon { color: #B14D00; background: #FFF3E2; }
+
+    .gqb-numbers {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+      margin-top: 12px;
+    }
+
+    .gqb-number {
+      padding: 10px 12px;
+      border-radius: 10px;
+      background: #FFFFFF;
+    }
+
+    .gqb-number strong {
+      display: block;
+      font-family: var(--p-display);
+      font-size: 28px;
+      font-weight: 700;
+      line-height: 1.1;
+    }
+
+    .gqb-number-ok strong { color: #16833A; }
+
+    .gqb-bars {
+      display: flex;
+      align-items: flex-end;
+      gap: 6px;
+      height: 64px;
+      margin-top: 8px;
+      padding: 10px 12px 0;
+      border-radius: 10px;
+      background: #FFFFFF;
+    }
+
+    .gqb-bars i {
+      flex: 1;
+      height: var(--bar-height);
+      border-radius: 3px 3px 0 0;
+      background: #1F5F99;
+    }
+
+    .gqb-bars i.gqb-bar-now {
+      background: #E8A317;
+    }
+
+    /* Etiqueta com QR, desenhada em CSS, no tamanho proporcional a 60 x 40 mm. */
+    .gqb-label-sheet {
+      display: grid;
+      grid-template-columns: auto minmax(0, 1fr);
+      gap: 16px;
+      align-items: center;
+      width: 300px;
+      max-width: 100%;
+      aspect-ratio: 60 / 40;
+      padding: 18px;
+      border: 2px solid #1C232A;
+      border-radius: 6px;
+      background: #FFFFFF;
+      color: #1C232A;
+    }
+
+    .gqb-qr {
+      display: grid;
+      grid-template-columns: repeat(9, 1fr);
+      width: 108px;
+      height: 108px;
+    }
+
+    .gqb-qr i {
+      background: #1C232A;
+    }
+
+    .gqb-qr i.off {
+      background: transparent;
+    }
+
+    .gqb-label-sheet strong {
+      display: block;
+      font-family: Consolas, 'Cascadia Mono', monospace;
+      font-size: 24px;
+    }
+
+    .gqb-label-sheet span {
+      display: block;
+      margin-top: 4px;
+      color: #505B65;
+      font-size: 13px;
+    }
+  </style>
+</head>
+<body class="produto produto-gqb">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="go-logo header-logo" href="../" aria-label="GO!, página inicial">GO<span class="go-bang">!</span></a>
+      <nav class="header-nav" aria-label="Menu principal">
+        <a class="header-link" href="../#produtos">Produtos</a>
+        <a class="header-link" href="../#sob-medida">Sob medida</a>
+        <a class="header-link" href="#contato">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="p-hero">
+      <div class="container p-hero-grid">
+        <div>
+          <p class="p-crumb"><a href="../#produtos">Produtos</a> / GQB</p>
+          <h1 class="p-title">
+            <img class="p-title-icon" src="../assets/produtos/gqb-icone.svg" alt="" width="64" height="64">
+            GQB
+          </h1>
+          <p class="p-fullname">Gestor de Qualidade de Balanças</p>
+          <p class="p-lead">
+            Para a fábrica, o supermercado ou o laboratório que precisa controlar as próprias
+            balanças: prazos de calibração e de manutenção, verificações de rotina, custos e
+            inspeção no chão de fábrica pelo QR code da etiqueta.
+          </p>
+          <div class="p-actions">
+            <a class="p-button" href="mailto:guilherme.oliveira@gontech.com?subject=Demonstra%C3%A7%C3%A3o%20do%20GQB">
+              Pedir uma demonstração
+              <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a class="p-ghost" href="#funcoes">Ver o que tem</a>
+          </div>
+        </div>
+
+        <figure class="p-shot" aria-labelledby="gqb-shot-legenda">
+          <div class="p-window">
+            <div class="p-window-bar">
+              <img src="../assets/produtos/gqb-icone.svg" alt="" width="18" height="18">
+              GQB
+              <span class="p-window-where">Painel</span>
+            </div>
+            <div class="gqb-panel">
+              <p class="gqb-label">Precisa de ação</p>
+              <div class="gqb-action">
+                <div class="gqb-action-row"><span class="gqb-tag">BAL-014</span><span class="gqb-where">Plataforma, expedição</span><span class="gqb-chip gqb-chip-late">Vencido</span></div>
+                <div class="gqb-action-row"><span class="gqb-tag">BAL-031</span><span class="gqb-where">Bancada, envase linha 2</span><span class="gqb-chip gqb-chip-soon">Vence</span></div>
+                <div class="gqb-action-row"><span class="gqb-tag">BAL-007</span><span class="gqb-where">Rodoviária, portaria</span><span class="gqb-chip gqb-chip-soon">Vence</span></div>
+              </div>
+              <div class="gqb-numbers">
+                <div class="gqb-number gqb-number-ok"><strong>92%</strong>Em dia</div>
+                <div class="gqb-number"><strong>4</strong>Próximos 30 dias</div>
+                <div class="gqb-number"><strong>48</strong>Equipamentos</div>
+              </div>
+              <p class="gqb-label" style="margin-top: 12px">Vencimentos por semana</p>
+              <div class="gqb-bars" aria-hidden="true">
+                <i class="gqb-bar-now" style="--bar-height: 60%"></i>
+                <i style="--bar-height: 35%"></i>
+                <i style="--bar-height: 80%"></i>
+                <i style="--bar-height: 20%"></i>
+                <i style="--bar-height: 45%"></i>
+                <i style="--bar-height: 65%"></i>
+                <i style="--bar-height: 30%"></i>
+                <i style="--bar-height: 50%"></i>
+              </div>
+            </div>
+          </div>
+          <figcaption id="gqb-shot-legenda">Ilustração do painel, com dados de exemplo.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="p-section" id="funcoes" aria-labelledby="funcoes-titulo">
+      <div class="container">
+        <h2 id="funcoes-titulo">O que tem no GQB</h2>
+        <p class="p-section-intro">Cada balança tem uma ficha com dados, prazos, histórico, anexos, custos e etiqueta.</p>
+        <ul class="p-features">
+          <li class="p-feature">
+            <h3>Painel</h3>
+            <ul>
+              <li>O que precisa de ação hoje</li>
+              <li>Percentual em dia, vencimentos dos próximos 30 dias, custo do mês e valor contábil</li>
+              <li>Custo por mês e vencimentos por semana em gráfico</li>
+            </ul>
+          </li>
+          <li class="p-feature">
+            <h3>Equipamentos</h3>
+            <ul>
+              <li>Inventário com busca e filtros por setor, situação, criticidade e prazo</li>
+              <li>Cadastro na tela ou por planilha .xlsx</li>
+              <li>Registros de calibração, verificação, manutenção, ocorrência, mudança e custo</li>
+            </ul>
+          </li>
+          <li class="p-feature">
+            <h3>Prazos</h3>
+            <ul>
+              <li>Agenda de vencimentos de calibração e manutenção</li>
+              <li>Verificações de rotina diárias, semanais, quinzenais ou mensais, com resultado OK ou NOK</li>
+              <li>Situação de cada balança: em operação, em calibração, em manutenção, fora de uso</li>
+            </ul>
+          </li>
+          <li class="p-feature">
+            <h3>Etiquetas</h3>
+            <ul>
+              <li>Etiqueta com QR code e tag, nos tamanhos 60 × 40, 50 × 30 e 100 × 50 mm</li>
+              <li>O QR abre a ficha da balança direto no celular</li>
+            </ul>
+          </li>
+          <li class="p-feature">
+            <h3>Custos e relatórios</h3>
+            <ul>
+              <li>Custos por categoria: calibração, manutenção, peça e parada</li>
+              <li>Depreciação linear e valor contábil</li>
+              <li>Relatórios de inventário, vencimentos, custos, depreciação, histórico, verificações, ocorrências e disponibilidade, na tela e em .xlsx</li>
+            </ul>
+          </li>
+          <li class="p-feature">
+            <h3>Acesso e registro</h3>
+            <ul>
+              <li>Perfis Administrador, Gestor, Inspetor e Leitura</li>
+              <li>Cada ação fica registrada com data, usuário e alvo</li>
+              <li>Cada empresa com o próprio logo e as próprias cores</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="p-section" aria-labelledby="inspecao-titulo">
+      <div class="container p-split">
+        <div>
+          <h2 id="inspecao-titulo">Inspeção pelo celular</h2>
+          <p class="p-section-intro">No chão de fábrica, o inspetor não precisa procurar a balança no sistema.</p>
+          <ol class="p-steps p-steps-vertical">
+            <li class="p-step">
+              <h3>Aponta a câmera para a etiqueta</h3>
+              <p>O modo inspeção lê o QR code. Se o QR estiver gasto, o app lê o número da tag.</p>
+            </li>
+            <li class="p-step">
+              <h3>Vê a ficha resumida</h3>
+              <p>Prazos, situação e as ações possíveis para aquela balança.</p>
+            </li>
+            <li class="p-step">
+              <h3>Registra a verificação</h3>
+              <p>OK ou NOK. Sem sinal, o registro fica guardado no aparelho e sobe quando a conexão volta.</p>
+            </li>
+          </ol>
+        </div>
+        <div>
+          <div class="gqb-label-sheet" role="img" aria-label="Exemplo de etiqueta 60 x 40 mm com QR code e a tag BAL-014">
+            <div class="gqb-qr" aria-hidden="true">
+              <i></i><i></i><i></i><i class="off"></i><i></i><i class="off"></i><i></i><i></i><i></i>
+              <i></i><i class="off"></i><i></i><i></i><i class="off"></i><i class="off"></i><i></i><i class="off"></i><i></i>
+              <i></i><i></i><i></i><i class="off"></i><i></i><i class="off"></i><i></i><i></i><i></i>
+              <i class="off"></i><i></i><i class="off"></i><i></i><i class="off"></i><i></i><i class="off"></i><i></i><i class="off"></i>
+              <i></i><i class="off"></i><i></i><i class="off"></i><i></i><i></i><i class="off"></i><i class="off"></i><i></i>
+              <i class="off"></i><i></i><i class="off"></i><i></i><i class="off"></i><i class="off"></i><i></i><i></i><i class="off"></i>
+              <i></i><i></i><i></i><i class="off"></i><i></i><i class="off"></i><i class="off"></i><i></i><i></i>
+              <i></i><i class="off"></i><i></i><i></i><i class="off"></i><i></i><i></i><i class="off"></i><i></i>
+              <i></i><i></i><i></i><i class="off"></i><i class="off"></i><i></i><i class="off"></i><i></i><i></i>
+            </div>
+            <div>
+              <strong>BAL-014</strong>
+              <span>Plataforma, expedição</span>
+              <span>Etiqueta 60 × 40 mm (exemplo)</span>
+            </div>
+          </div>
+          <p class="p-note">As calibrações aprovadas na <a href="../cgo/">Calibração Guiada</a> entram sozinhas na ficha da balança, sem ninguém digitar.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="p-section" aria-labelledby="quem-usa-titulo">
+      <div class="container">
+        <h2 id="quem-usa-titulo">Quem usa</h2>
+        <table class="p-table">
+          <tbody>
+            <tr><th scope="row">Qualidade e manutenção</th><td>Perfis Administrador e Gestor: cadastro, prazos, custos, relatórios e usuários.</td></tr>
+            <tr><th scope="row">Inspetor</th><td>Modo inspeção no celular, direto no chão de fábrica.</td></tr>
+            <tr><th scope="row">Quem acompanha</th><td>Perfil Leitura: vê tudo, não altera nada.</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section class="p-section" aria-labelledby="outros-titulo">
+      <div class="container">
+        <h2 id="outros-titulo">Outros produtos da GO!</h2>
+        <ul class="p-related">
+          <li><a href="../sgo/"><img src="../assets/produtos/sgo-icone-verde.svg" alt=""><span><strong>SGO</strong><span>Sistema de Gestão Operacional</span></span></a></li>
+          <li><a href="../cgo/"><img src="../assets/produtos/cgo-icone.svg" alt=""><span><strong>CGO</strong><span>Calibração Guiada</span></span></a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="p-cta" id="contato" aria-labelledby="contato-titulo">
+      <div class="container">
+        <h2 id="contato-titulo">Quer ver o GQB com as suas balanças?</h2>
+        <p>Mande um e-mail com quantas balanças a empresa tem e onde ficam. A gente marca uma demonstração.</p>
+        <div class="p-actions">
+          <a class="p-button" href="mailto:guilherme.oliveira@gontech.com?subject=Demonstra%C3%A7%C3%A3o%20do%20GQB">
+            Pedir uma demonstração
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="p-ghost" href="mailto:guilherme.oliveira@gontech.com">guilherme.oliveira@gontech.com</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span class="p-signature">um produto <span class="go-logo">GO<span class="go-bang">!</span></span></span>
+      <span>&copy; <span data-year>2026</span> GO!</span>
+    </div>
+  </footer>
+
+  <script src="../js/main.js" defer></script>
+</body>
+</html>

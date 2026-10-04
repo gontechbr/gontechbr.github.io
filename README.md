@@ -1,8 +1,8 @@
 # Site da GO!
 
-Página única, em português, que apresenta a GO! como empresa de software industrial sob demanda
-(integração com o chão de fábrica, gestão da qualidade, rastreabilidade, integração com MES e
-ERP, sistemas para a operação) e leva a pessoa para o e-mail de contato.
+Site institucional da GO!: uma página inicial, em português, que apresenta os produtos prontos
+(SGO, GQB e Calibração Guiada) e os projetos sob medida, e uma página para cada produto. Tudo leva
+para o e-mail de contato.
 
 ## Onde roda e do que depende
 
@@ -30,14 +30,43 @@ Cada push na `main` publica de novo. O Pages leva cerca de um minuto para atuali
 ## Estrutura
 
 ```
-index.html           conteúdo da página
-css/styles.css       cores, fontes e layout (cores da marca no começo do arquivo)
+index.html           página inicial (produtos, sob medida, como atendemos, contato)
+sgo/index.html       página do SGO
+gqb/index.html       página do GQB
+cgo/index.html       página da Calibração Guiada
+css/styles.css       cores, fontes e layout do site (cores da marca no começo do arquivo)
+css/produto.css      layout das páginas de produto e a cor e as fontes de cada app
+js/abertura.js       animação de abertura da página inicial
 js/main.js           ano do rodapé
+assets/produtos/     logos e ícones dos produtos, copiados dos repos de cada app
 favicon.ico, favicon-32.png, apple-touch-icon.png, icon-192.png, icon-512.png
 og-image.png         imagem que aparece quando o link é compartilhado
 site.webmanifest
 _scripts/gerar_icones.py   gera os ícones e a og-image
 ```
+
+## Páginas de produto
+
+Cada página usa o cabeçalho e o rodapé do site da GO! e, no miolo, a cor e as fontes do próprio app
+(classes `.produto-sgo`, `.produto-gqb` e `.produto-cgo` em `css/produto.css`). As cores e as fontes
+vieram do CSS de cada app:
+
+| Produto | De onde veio | Cor de destaque | Fontes |
+|---|---|---|---|
+| SGO | `C:\sivs\SivsMockup` e `SGO-marca.zip` | `#0A9E64` | Barlow Condensed e Hanken Grotesk |
+| GQB | `C:\ParqueDeBalancas` | `#1F5F99` | Bahnschrift (Barlow Semi Condensed fora do Windows) e Segoe UI |
+| Calibração Guiada | `C:\CalibracaoGuiadaApp` | `#E8590C` | Bahnschrift (Barlow Semi Condensed fora do Windows) e Segoe UI |
+
+As telas no topo de cada página são ilustrações em HTML e CSS, não capturas. Os textos e números
+nelas são de exemplo e a legenda diz isso. Os textos das funções foram tirados do código e do README
+de cada app: só entra o que já tem tela. Ao mudar um app, revise a página dele.
+
+## Abertura
+
+A página inicial mostra a animação do GO! (adaptada do `abertura.js` do SGO) uma vez por visita. A
+marca fica no `sessionStorage` (`go-abertura-vista`). Para ver de novo, abra o site numa aba nova ou
+rode `sessionStorage.clear()` no console. A pessoa pode pular com o botão "Pular" ou com Esc, e quem
+pediu menos movimento no sistema vê o logo parado.
 
 ## Configuração
 

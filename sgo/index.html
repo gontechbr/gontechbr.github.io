@@ -1,0 +1,310 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>SGO | Sistema de Gestão Operacional | GO!</title>
+  <meta name="description" content="SGO, Sistema de Gestão Operacional: gestão de assistência técnica com atendimento, O.S., agenda dos técnicos, orçamento na visita, vendas, financeiro, qualidade e calibração. Um produto GO!.">
+  <meta name="theme-color" content="#0F1114">
+
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="pt_BR">
+  <meta property="og:title" content="SGO | Sistema de Gestão Operacional">
+  <meta property="og:description" content="Gestão de assistência técnica do atendimento ao caixa. Um produto GO!.">
+  <meta property="og:image" content="https://gontechbr.github.io/og-image.png">
+
+  <link rel="icon" href="../favicon.ico" sizes="any">
+  <link rel="icon" href="../favicon-32.png" type="image/png" sizes="32x32">
+  <link rel="apple-touch-icon" href="../apple-touch-icon.png">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Unbounded:wght@800&family=Hanken+Grotesk:wght@400;700&family=Barlow+Condensed:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/produto.css">
+  <style>
+    /* Ilustração da tela inicial do SGO: os módulos com as cores definidas no Program.cs do app. */
+    .sgo-home {
+      padding: 18px;
+      background: var(--p-chrome);
+    }
+
+    .sgo-home-hello {
+      font-family: var(--p-display);
+      font-size: 20px;
+      font-weight: 700;
+      color: var(--p-chrome-text);
+    }
+
+    .sgo-home-hint {
+      margin-top: 2px;
+      color: var(--p-chrome-muted);
+    }
+
+    .sgo-modules {
+      list-style: none;
+      padding: 0;
+      margin: 14px 0 0;
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 8px;
+    }
+
+    .sgo-module {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      min-height: 92px;
+      padding: 12px;
+      border-radius: 10px;
+      background: var(--p-chrome-3);
+      border: 1px solid var(--p-chrome-line);
+      color: var(--p-chrome-text);
+    }
+
+    .sgo-module-mark {
+      width: 26px;
+      height: 26px;
+      border-radius: 7px;
+      background: var(--module-color);
+    }
+
+    .sgo-module strong {
+      font-family: var(--p-display);
+      font-size: 17px;
+      font-weight: 700;
+    }
+
+    .sgo-module span {
+      color: var(--p-chrome-muted);
+      font-size: 12px;
+    }
+
+    @media (max-width: 640px) {
+      .sgo-modules {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+
+      .sgo-module:last-child {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body class="produto produto-sgo">
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="go-logo header-logo" href="../" aria-label="GO!, página inicial">GO<span class="go-bang">!</span></a>
+      <nav class="header-nav" aria-label="Menu principal">
+        <a class="header-link" href="../#produtos">Produtos</a>
+        <a class="header-link" href="../#sob-medida">Sob medida</a>
+        <a class="header-link" href="#contato">Contato</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="p-hero">
+      <div class="container p-hero-grid">
+        <div>
+          <p class="p-crumb"><a href="../#produtos">Produtos</a> / SGO</p>
+          <h1 class="p-title">
+            <img src="../assets/produtos/sgo-fundo-escuro.svg" alt="SGO" width="235" height="70">
+          </h1>
+          <p class="p-fullname">Sistema de Gestão Operacional</p>
+          <p class="p-lead">
+            Gestão de empresas de assistência técnica, do primeiro contato do cliente ao dinheiro
+            no caixa: atendimento com protocolo, O.S., agenda dos técnicos, orçamento na visita,
+            vendas e financeiro.
+          </p>
+          <div class="p-actions">
+            <a class="p-button" href="mailto:guilherme.oliveira@gontech.com?subject=Demonstra%C3%A7%C3%A3o%20do%20SGO">
+              Pedir uma demonstração
+              <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+            </a>
+            <a class="p-ghost" href="#modulos">Ver os módulos</a>
+          </div>
+        </div>
+
+        <figure class="p-shot" aria-labelledby="sgo-shot-legenda">
+          <div class="p-window">
+            <div class="p-window-bar">
+              <img src="../assets/produtos/sgo-fundo-escuro.svg" alt="" width="60" height="18">
+              <span class="p-window-where">Início</span>
+            </div>
+            <div class="sgo-home">
+              <p class="sgo-home-hello">Bom dia</p>
+              <p class="sgo-home-hint">Escolha um módulo para começar.</p>
+              <ul class="sgo-modules">
+                <li class="sgo-module" style="--module-color: #00a2c7"><i class="sgo-module-mark"></i><strong>Serviço</strong><span>Ordens de serviço e assistência</span></li>
+                <li class="sgo-module" style="--module-color: #8e4ec6"><i class="sgo-module-mark"></i><strong>Vendas</strong><span>Orçamentos, pedidos e clientes</span></li>
+                <li class="sgo-module" style="--module-color: #12a594"><i class="sgo-module-mark"></i><strong>Calibração</strong><span>Certificados e padrões</span></li>
+                <li class="sgo-module" style="--module-color: #30a46c"><i class="sgo-module-mark"></i><strong>Qualidade</strong><span>Não conformidades e auditorias</span></li>
+                <li class="sgo-module" style="--module-color: #46a758"><i class="sgo-module-mark"></i><strong>Análise</strong><span>Relatórios e indicadores</span></li>
+                <li class="sgo-module" style="--module-color: #5bb318"><i class="sgo-module-mark"></i><strong>Financeiro</strong><span>Contas a pagar e receber</span></li>
+                <li class="sgo-module" style="--module-color: #7cb518"><i class="sgo-module-mark"></i><strong>Caixa</strong><span>Movimentação diária de caixa</span></li>
+                <li class="sgo-module" style="--module-color: #e5484d"><i class="sgo-module-mark"></i><strong>Administrativo</strong><span>Cadastros, usuários e configurações</span></li>
+                <li class="sgo-module" style="--module-color: #0090ff"><i class="sgo-module-mark"></i><strong>Mobile</strong><span>Acesso e apps de campo</span></li>
+              </ul>
+            </div>
+          </div>
+          <figcaption id="sgo-shot-legenda">Ilustração da tela inicial, com os módulos do SGO.</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <section class="p-section" id="modulos" aria-labelledby="modulos-titulo">
+      <div class="container">
+        <h2 id="modulos-titulo">O que tem no SGO</h2>
+        <p class="p-section-intro">Cada módulo tem a própria cor no app. Aqui estão as telas que já estão em uso.</p>
+        <ul class="p-features">
+          <li class="p-feature" style="--feature-color: #00a2c7">
+            <h3>Serviço</h3>
+            <ul>
+              <li>Atendimento com número de protocolo, num passo a passo</li>
+              <li>O.S. com fotos pela câmera, anexos, checklist e histórico</li>
+              <li>Agenda de visitas técnicas e de coletas para o laboratório</li>
+              <li>Minha agenda do técnico, com "Cheguei no cliente" e "Encerrar visita"</li>
+              <li>Orçamento montado na visita, com preço de tabela, deslocamento calculado e aceite do cliente assinado com o dedo</li>
+            </ul>
+          </li>
+          <li class="p-feature" style="--feature-color: #8e4ec6">
+            <h3>Vendas</h3>
+            <ul>
+              <li>Cotações e pedidos de venda (aberto, fechado e faturado)</li>
+              <li>Clientes</li>
+              <li>Catálogo de peças, com estoque e estoque mínimo, e de serviços</li>
+              <li>Importação de planilha</li>
+            </ul>
+          </li>
+          <li class="p-feature" style="--feature-color: #5bb318">
+            <h3>Financeiro e caixa</h3>
+            <ul>
+              <li>Conta a receber criada sozinha quando o pedido ou a O.S. é faturada</li>
+              <li>Parcelas geradas pela condição de pagamento, como "28/56/84"</li>
+              <li>Contas a pagar, baixa, estorno e fluxo de caixa</li>
+              <li>Caixa do dia com abertura, sangria, suprimento e fechamento conferido</li>
+            </ul>
+          </li>
+          <li class="p-feature" style="--feature-color: #30a46c">
+            <h3>Qualidade e calibração</h3>
+            <ul>
+              <li>Não conformidades numeradas, da abertura até a eficácia verificada</li>
+              <li>Auditorias internas</li>
+              <li>Vencimentos de calibração dos equipamentos dos clientes: vencidas e as que vencem em 30, 60 ou 90 dias</li>
+              <li>Padrões de referência</li>
+            </ul>
+          </li>
+          <li class="p-feature" style="--feature-color: #46a758">
+            <h3>Análise</h3>
+            <ul>
+              <li>O.S. abertas e finalizadas, tempo médio e % finalizadas no prazo</li>
+              <li>Retrabalho, aprovação de cotações e faturamento</li>
+              <li>Maiores clientes e produção por técnico</li>
+              <li>Relatórios exportados em CSV pronto para o Excel</li>
+            </ul>
+          </li>
+          <li class="p-feature">
+            <h3>Área do cliente</h3>
+            <ul>
+              <li>O cliente vê os equipamentos dele e as O.S. em PDF</li>
+              <li>Aprova ou reprova orçamentos pela própria área</li>
+              <li>Recebe os documentos que a empresa libera</li>
+            </ul>
+          </li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="p-section" aria-labelledby="fluxo-titulo">
+      <div class="container">
+        <h2 id="fluxo-titulo">Do chamado ao caixa</h2>
+        <p class="p-section-intro">O mesmo atendimento passa por todas as etapas sem ser digitado de novo.</p>
+        <ol class="p-steps" style="--step-count: 5">
+          <li class="p-step">
+            <h3>Atendimento</h3>
+            <p>O cliente liga e sai com um número de protocolo.</p>
+          </li>
+          <li class="p-step">
+            <h3>Agenda</h3>
+            <p>A visita ou a coleta entra na agenda do técnico.</p>
+          </li>
+          <li class="p-step">
+            <h3>Visita</h3>
+            <p>O técnico monta o orçamento no tablet e o cliente assina na tela.</p>
+          </li>
+          <li class="p-step">
+            <h3>O.S.</h3>
+            <p>O orçamento aceito vira O.S., com status, fotos e checklist.</p>
+          </li>
+          <li class="p-step">
+            <h3>Financeiro</h3>
+            <p>Faturou, a conta a receber aparece com as parcelas.</p>
+          </li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="p-section" aria-labelledby="quem-usa-titulo">
+      <div class="container p-split">
+        <div>
+          <h2 id="quem-usa-titulo">Quem usa</h2>
+          <table class="p-table">
+            <tbody>
+              <tr><th scope="row">Diretor e gerente</th><td>Indicadores, financeiro, caixa e aprovações, no PC.</td></tr>
+              <tr><th scope="row">Assistente administrativo</th><td>Atendimento, agenda, cotações e pedidos.</td></tr>
+              <tr><th scope="row">Técnico de manutenção</th><td>Minha agenda, O.S. e orçamento na visita, no celular ou tablet.</td></tr>
+              <tr><th scope="row">Cliente</th><td>Área do cliente, com equipamentos, O.S. e orçamentos para aprovar.</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div>
+          <h2>Como funciona</h2>
+          <table class="p-table">
+            <tbody>
+              <tr><th scope="row">Onde abre</th><td>No navegador, e instala como app no celular, no tablet e no PC.</td></tr>
+              <tr><th scope="row">Tela de toque</th><td>Feito para dedo: tablet, celular e tela de 21 polegadas.</td></tr>
+              <tr><th scope="row">Sem internet</th><td>Continua funcionando quando a conexão cai.</td></tr>
+              <tr><th scope="row">Acesso</th><td>Entrada por nome e PIN. Cada função tem as próprias permissões.</td></tr>
+              <tr><th scope="row">Marca</th><td>Cada empresa usa o SGO com o próprio logo e a própria cor.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </section>
+
+    <section class="p-section" aria-labelledby="outros-titulo">
+      <div class="container">
+        <h2 id="outros-titulo">Outros produtos da GO!</h2>
+        <ul class="p-related">
+          <li><a href="../gqb/"><img src="../assets/produtos/gqb-icone.svg" alt=""><span><strong>GQB</strong><span>Gestor de Qualidade de Balanças</span></span></a></li>
+          <li><a href="../cgo/"><img src="../assets/produtos/cgo-icone.svg" alt=""><span><strong>CGO</strong><span>Calibração Guiada</span></span></a></li>
+        </ul>
+      </div>
+    </section>
+
+    <section class="p-cta" id="contato" aria-labelledby="contato-titulo">
+      <div class="container">
+        <h2 id="contato-titulo">Quer ver o SGO funcionando?</h2>
+        <p>Mande um e-mail contando como a empresa trabalha hoje. A gente marca uma demonstração com os dados de exemplo.</p>
+        <div class="p-actions">
+          <a class="p-button" href="mailto:guilherme.oliveira@gontech.com?subject=Demonstra%C3%A7%C3%A3o%20do%20SGO">
+            Pedir uma demonstração
+            <svg class="icon" aria-hidden="true" viewBox="0 0 24 24"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+          <a class="p-ghost" href="mailto:guilherme.oliveira@gontech.com">guilherme.oliveira@gontech.com</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span class="p-signature">um produto <span class="go-logo">GO<span class="go-bang">!</span></span></span>
+      <span>&copy; <span data-year>2026</span> GO!</span>
+    </div>
+  </footer>
+
+  <script src="../js/main.js" defer></script>
+</body>
+</html>
