@@ -333,9 +333,15 @@ h2 {
   font-size: 19px;
 }
 
+.contact-links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 16px 48px;
+  margin-top: 40px;
+}
+
 .contact-email {
   display: inline-block;
-  margin-top: 40px;
   font-size: clamp(20px, 3vw, 28px);
   font-weight: 700;
   text-decoration: none;
