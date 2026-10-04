@@ -32,7 +32,7 @@ Cada push na `main` publica de novo. O Pages leva cerca de um minuto para atuali
 ```
 index.html           conteúdo da página
 css/styles.css       cores, fontes e layout (cores da marca no começo do arquivo)
-js/main.js           e-mail de contato e ano do rodapé
+js/main.js           ano do rodapé
 favicon.ico, favicon-32.png, apple-touch-icon.png, icon-192.png, icon-512.png
 og-image.png         imagem que aparece quando o link é compartilhado
 site.webmanifest
@@ -41,8 +41,8 @@ _scripts/gerar_icones.py   gera os ícones e a og-image
 
 ## Configuração
 
-O e-mail de contato fica no começo de `js/main.js`, na constante `CONTACT_EMAIL`. Enquanto estiver
-vazia, a página mostra `[PREENCHER: e-mail de contato]` e o console do navegador registra o motivo.
+O e-mail de contato fica em `index.html`, na seção `contato`, no link com `data-contact="email"`
+(no `href` e no texto). Hoje é guilherme.oliveira@gontech.com.
 
 ## Como gerar os ícones de novo
 
