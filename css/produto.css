@@ -183,6 +183,14 @@
   padding-bottom: 2px;
 }
 
+/* Aviso curto embaixo do link do app online (o que se vê ao abrir e o tempo da primeira carga). */
+.p-online-note {
+  margin-top: 14px;
+  max-width: 460px;
+  font-size: 14px;
+  color: var(--p-chrome-muted);
+}
+
 /* Moldura da ilustração: parece uma janela do app, sem sombra nem brilho. */
 .p-shot {
   margin: 0;
