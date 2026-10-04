@@ -1,8 +1,8 @@
 # Site da GO!
 
 Página única, em português, que apresenta a GO! como empresa de software industrial sob demanda
-(aperto e torque, rastreabilidade, integração com MES e ERP, sistemas para a operação) e leva a pessoa
-para o e-mail de contato.
+(integração com o chão de fábrica, gestão da qualidade, rastreabilidade, integração com MES e
+ERP, sistemas para a operação) e leva a pessoa para o e-mail de contato.
 
 ## Onde roda e do que depende
 
