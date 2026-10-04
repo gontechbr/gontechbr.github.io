@@ -358,9 +358,26 @@ h2 {
 
 .footer-inner {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  height: 72px;
+  gap: 12px 24px;
+  min-height: 72px;
+  padding-top: 16px;
+  padding-bottom: 16px;
+}
+
+.footer-whatsapp {
+  color: var(--go-claro);
+  font-weight: 700;
+  text-decoration: none;
+  border-bottom: 2px solid var(--go-verde);
+  padding-bottom: 2px;
+}
+
+.footer-whatsapp:hover,
+.footer-whatsapp:focus-visible {
+  color: #FFFFFF;
 }
 
 .footer-logo {
