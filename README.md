@@ -76,7 +76,8 @@ Marcação, cores e tempos são os do Claude Design. Para mudar a animação, mu
   cena parada.
 - `js/main.js` manda `{ goDemo: 'pause' }` para o iframe quando ele sai da tela e `{ goDemo: 'play' }`
   quando volta. Se a pessoa pausou pelo botão, a página não retoma.
-- A altura do iframe fica em `.p-demo-frame` (`css/produto.css`). Abaixo de uns 460 px de altura, as
+- A demonstração roda em 800 x 520 e `js/main.js` amplia o iframe para ocupar a faixa (até 1.400 px de
+  largura e 85% da altura da janela). Em tela com menos de 760 px, não amplia. Abaixo de uns 460 px, as
   folhas que sobem do rodapé da demonstração (como "Agendar visita" no SGO) ficam cortadas.
 
 ## Logos do GQB e do CGO

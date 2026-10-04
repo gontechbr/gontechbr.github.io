@@ -260,12 +260,28 @@
   margin-bottom: 20px;
 }
 
+.p-demo-stage {
+  width: min(1400px, 100% - 48px);
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+/* A demonstração roda num tamanho fixo e js/main.js amplia o iframe para ocupar a largura da faixa
+   (a fonte dela para em 14 px, então só alargar o quadro deixaria a tela vazia). Sem o script,
+   ou em tela estreita, o iframe ocupa a largura e fica com 500 px de altura. */
 .p-demo-frame {
   display: block;
   width: 100%;
-  height: clamp(460px, 46vw, 600px);
+  height: 500px;
   border: 0;
   background: var(--p-chrome);
+}
+
+.p-demo-stage.is-scaled .p-demo-frame {
+  width: 800px;
+  height: 520px;
+  transform-origin: top left;
+  transform: scale(var(--demo-scale, 1));
 }
 
 /* Funcionalidades em grupos, em colunas com fio no topo (sem cartão). */
