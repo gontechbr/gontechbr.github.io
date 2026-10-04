@@ -6,7 +6,9 @@
 <title>Demonstração do CGO</title>
 <!-- Feito no Claude Design (projeto "Demo CGO.dc.html"). Convertido para HTML puro: o runtime
      de componentes do Claude Design saiu, e o quadro chama o motor js/go-demo-engine.js direto.
-     Marcação, cores e tempos são os do arquivo original. -->
+     Marcação, cores e tempos são os do arquivo original. Única mudança: na linha Umidade do
+     Ambiente final, valores em %UR e variação vazia, como na tela do app (o limite dela é faixa
+     absoluta, não variação). -->
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
 <link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&amp;display=swap" rel="stylesheet">
@@ -159,7 +161,7 @@
           <div style="background:#FFFFFF;border:1px solid #DDE2E7;border-radius:10px;padding:.3rem .8rem;font-size:.82rem">
             <div style="display:grid;grid-template-columns:minmax(0,1.3fr) repeat(3,minmax(0,1fr)) minmax(0,1.3fr);gap:.4rem;padding:.5rem 0;color:#505B65;font-size:.74rem;border-bottom:1px solid #E1E5E9"><span>Grandeza</span><span>Inicial</span><span>Final</span><span>Variação</span><span>Limite</span></div>
             <div data-k="r1" style="display:grid;grid-template-columns:minmax(0,1.3fr) repeat(3,minmax(0,1fr)) minmax(0,1.3fr);gap:.4rem;padding:.55rem 0;border-bottom:1px solid #E1E5E9;align-items:center;opacity:0"><span>Temperatura</span><span>22,4 °C</span><span>23,1 °C</span><span style="color:#16833A;font-weight:600">+0,7 °C</span><span>± 5 °C</span></div>
-            <div data-k="r2" style="display:grid;grid-template-columns:minmax(0,1.3fr) repeat(3,minmax(0,1fr)) minmax(0,1.3fr);gap:.4rem;padding:.55rem 0;border-bottom:1px solid #E1E5E9;align-items:center;opacity:0"><span>Umidade</span><span>55 %</span><span>53 %</span><span style="color:#16833A;font-weight:600">−2 %</span><span>20 a 80 %UR</span></div>
+            <div data-k="r2" style="display:grid;grid-template-columns:minmax(0,1.3fr) repeat(3,minmax(0,1fr)) minmax(0,1.3fr);gap:.4rem;padding:.55rem 0;border-bottom:1px solid #E1E5E9;align-items:center;opacity:0"><span>Umidade</span><span>55 %UR</span><span>53 %UR</span><span style="color:#505B65">—</span><span>20 a 80 %UR</span></div>
             <div data-k="r3" style="display:grid;grid-template-columns:minmax(0,1.3fr) repeat(3,minmax(0,1fr)) minmax(0,1.3fr);gap:.4rem;padding:.55rem 0;align-items:center;opacity:0"><span>Pressão</span><span>1012 hPa</span><span>1011 hPa</span><span style="color:#16833A;font-weight:600">−1 hPa</span><span>± 10 hPa</span></div>
           </div>
           <div data-k="envOk" style="align-self:flex-start;font-size:.8rem;color:#16833A;background:#E6F6EC;border-radius:999px;padding:.25rem .7rem;opacity:0">Todas dentro do limite</div>
