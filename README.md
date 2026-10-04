@@ -99,8 +99,8 @@ pediu menos movimento no sistema vê o logo parado.
 O e-mail de contato fica em `index.html`, na seção `contato`, no link com `data-contact="email"`
 (no `href` e no texto). Hoje é guilherme.oliveira@gontech.com.
 
-O WhatsApp de contato fica no rodapé das quatro páginas (`index.html`, `sgo/`, `gqb/` e `cgo/`), no
-link com a classe `footer-whatsapp`: o número aparece no texto e vai no `href` como
+O WhatsApp de contato fica no bloco de contato da página inicial (`.contact-links` em `index.html`) e
+na chamada final de `sgo/`, `gqb/` e `cgo/`: o número aparece no texto e vai no `href` como
 `https://wa.me/5519996887198`. Para trocar, mude nos quatro arquivos.
 
 ## Como gerar os ícones de novo

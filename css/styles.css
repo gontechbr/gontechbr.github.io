@@ -373,18 +373,6 @@ h2 {
   padding-bottom: 16px;
 }
 
-.footer-whatsapp {
-  color: var(--go-claro);
-  font-weight: 700;
-  text-decoration: none;
-  border-bottom: 2px solid var(--go-verde);
-  padding-bottom: 2px;
-}
-
-.footer-whatsapp:hover,
-.footer-whatsapp:focus-visible {
-  color: #FFFFFF;
-}
 
 .footer-logo {
   font-size: 18px;
