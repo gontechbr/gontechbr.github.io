@@ -1,5 +1,5 @@
-/* Cores e fontes da marca. Os valores vêm de 02-tokens/go-tokens.css do repo go-marca;
-   se a marca mudar lá, mude aqui também. */
+/* Cores e fonte do logo vêm de 02-tokens/go-tokens.css do repo go-marca; se a marca mudar lá,
+   mude aqui também. O texto da página usa Arial (escolha do site, não da marca). */
 :root {
   --go-verde: #0A9E64;
   --go-grafite: #0F1114;
@@ -9,7 +9,7 @@
   --linha: #DADDE2;
 
   --go-fonte-logo: 'Unbounded', sans-serif;
-  --go-fonte-texto: 'Hanken Grotesk', system-ui, sans-serif;
+  --go-fonte-texto: Arial, Helvetica, sans-serif;
 
   --largura: 1120px;
 }
@@ -113,9 +113,9 @@ a {
 
 h1,
 h2 {
-  font-family: var(--go-fonte-logo);
-  font-weight: 800;
-  letter-spacing: -0.04em;
+  font-family: var(--go-fonte-texto);
+  font-weight: 700;
+  letter-spacing: -0.02em;
   line-height: 1.05;
 }
 
@@ -189,8 +189,8 @@ h2 {
 }
 
 .service-number {
-  font-family: var(--go-fonte-logo);
-  font-weight: 800;
+  font-family: var(--go-fonte-texto);
+  font-weight: 700;
   font-size: 15px;
   color: var(--go-cinza);
 }

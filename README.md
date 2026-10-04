@@ -9,7 +9,7 @@ ERP, sistemas para a operação) e leva a pessoa para o e-mail de contato.
 - Em produção: GitHub Pages, publicado da branch `main`, pasta raiz. Endereço:
   https://gontechbr.github.io
 - Não há build, banco nem servidor. O arquivo `.nojekyll` faz o Pages publicar os arquivos como estão.
-- Externo: fontes Unbounded e Hanken Grotesk, do Google Fonts.
+- Externo: fonte Unbounded, do Google Fonts, só no logo. O resto do texto usa Arial.
 
 Cores, fontes e regras do logo vêm do repo [go-marca](https://github.com/gontechbr/go-marca).
 
