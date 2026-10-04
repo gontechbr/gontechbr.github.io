@@ -24,7 +24,7 @@
   --p-accent: #1F5F99;
   --p-accent-text: #FFFFFF;
   --p-accent-soft: #E9EFF5;
-  --p-chrome: #1B2228;
+  --p-chrome: #1B222B;
   --p-chrome-2: #272D33;
   --p-chrome-3: #323940;
   --p-chrome-line: #3A434C;
@@ -38,11 +38,11 @@
 }
 
 .produto-cgo {
-  --p-accent: #E8590C;
+  --p-accent: #E8601C;
   --p-accent-text: #FFFFFF;
-  --p-accent-button: #CC4E0B;
+  --p-accent-button: #C8500E;
   --p-accent-soft: #FFF1E8;
-  --p-chrome: #161B20;
+  --p-chrome: #1A2129;
   --p-chrome-2: #1D242B;
   --p-chrome-3: #2A3540;
   --p-chrome-line: #3A4855;
@@ -112,6 +112,12 @@
 
 .p-title img {
   display: block;
+}
+
+.p-title-logo {
+  display: block;
+  height: clamp(56px, 8vw, 84px);
+  width: auto;
 }
 
 .p-title-icon {
@@ -238,6 +244,28 @@
   max-width: 640px;
   font-size: 18px;
   color: var(--p-muted);
+}
+
+/* Demonstração animada (Claude Design) logo abaixo do topo, na largura do conteúdo.
+   O iframe tem a mesma cor de fundo do topo, então a faixa parece continuação dele. */
+.p-demo {
+  background: var(--p-chrome);
+  color: var(--p-chrome-text);
+  padding: 0 0 88px;
+}
+
+.p-demo h2 {
+  font-size: clamp(24px, 3vw, 32px);
+  font-weight: 700;
+  margin-bottom: 20px;
+}
+
+.p-demo-frame {
+  display: block;
+  width: 100%;
+  height: clamp(460px, 46vw, 600px);
+  border: 0;
+  background: var(--p-chrome);
 }
 
 /* Funcionalidades em grupos, em colunas com fio no topo (sem cartão). */

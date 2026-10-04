@@ -1,0 +1,234 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Demonstração do GQB</title>
+<!-- Feito no Claude Design (projeto "Demo GQB.dc.html"). Convertido para HTML puro: o runtime
+     de componentes do Claude Design saiu, e o quadro chama o motor js/go-demo-engine.js direto.
+     Marcação, cores e tempos são os do arquivo original. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Semi+Condensed:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<script src="../js/go-demo-engine.js"></script>
+<style>html,body{margin:0;height:100%;background:#1B222B;overflow:hidden}html{font-size:clamp(9.5px,min(2.2vw,2.7vh),14px)}*{box-sizing:border-box}a{color:#1F5F99}a:hover{color:#E8A317}</style>
+<style>[data-k="pause"]:hover,[data-k="pause"]:focus-visible{border-color:#A9B3BD}</style>
+</head>
+<body>
+<div data-demo="gqb" data-screen-label="Demo GQB" style="position:fixed;inset:0;display:flex;flex-direction:column;gap:.5rem;padding:.8rem;background:#1B222B;color:#1C232A;font-family:'Segoe UI',system-ui,sans-serif">
+  <p style="position:absolute;width:1px;height:1px;margin:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">Demonstração do GQB: o painel com os prazos das balanças e a verificação de uma balança pelo celular, lendo o QR code da etiqueta.</p>
+
+  <div aria-hidden="true" style="flex:1;min-height:0;display:flex;flex-direction:column;border:1px solid #2D3742;border-radius:14px;overflow:hidden;background:#EDF0F3">
+    <div style="flex:none;height:2.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:0 1rem;background:#1B222B;border-bottom:1px solid #2D3742">
+      <div style="font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;font-size:1.3rem;letter-spacing:.03em;line-height:1;display:flex"><span style="color:#FFFFFF">G</span><span style="color:#E8A317">Q</span><span style="color:#FFFFFF">B</span></div>
+      <div style="display:grid;justify-items:end;font-size:.78rem;color:#D5DBE1;white-space:nowrap">
+        <span data-k="cr1" style="grid-area:1/1">Painel</span>
+        <span data-k="cr2" style="grid-area:1/1;opacity:0">Inspeção</span>
+      </div>
+    </div>
+
+    <div data-k="screen" style="position:relative;flex:1;min-height:0;overflow:hidden">
+
+      <!-- Painel -->
+      <div data-k="desk" style="position:absolute;inset:0;padding:.9rem 1.1rem 1rem;display:flex;flex-direction:column;gap:.7rem;opacity:0">
+        <div style="display:flex;justify-content:space-between;align-items:baseline;gap:1rem">
+          <div style="font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;font-size:1.5rem;line-height:1">Painel</div>
+          <div style="font-size:.76rem;color:#505B65">14/10/2026</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(9.6rem,1fr));gap:.5rem">
+          <div style="background:#FFFFFF;border:1px solid #DDE2E7;border-radius:10px;padding:.6rem .75rem"><div style="font-size:.74rem;color:#505B65">Em dia</div><div data-k="kv1" style="font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;font-size:1.6rem;line-height:1.1;color:#16833A">0%</div></div>
+          <div style="background:#FFFFFF;border:1px solid #DDE2E7;border-radius:10px;padding:.6rem .75rem"><div style="font-size:.74rem;color:#505B65">Próximos 30 dias</div><div data-k="kv2" style="font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;font-size:1.6rem;line-height:1.1">0</div></div>
+          <div style="background:#FFFFFF;border:1px solid #DDE2E7;border-radius:10px;padding:.6rem .75rem"><div style="font-size:.74rem;color:#505B65">Equipamentos</div><div data-k="kv3" style="font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;font-size:1.6rem;line-height:1.1">0</div></div>
+          <div style="background:#FFFFFF;border:1px solid #DDE2E7;border-radius:10px;padding:.6rem .75rem"><div style="font-size:.74rem;color:#505B65">Custo do mês</div><div data-k="kv4" style="font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;font-size:1.6rem;line-height:1.1;white-space:nowrap">R$ 0,00</div></div>
+        </div>
+        <div style="flex:1;min-height:0;display:grid;grid-template-columns:repeat(auto-fit,minmax(13rem,1fr));gap:.5rem;align-content:start">
+          <div style="background:#FFFFFF;border:1px solid #DDE2E7;border-radius:10px;padding:.7rem .8rem;display:flex;flex-direction:column;gap:.15rem">
+            <div style="font-family:'Barlow Semi Condensed',sans-serif;font-weight:600;font-size:1.05rem;margin-bottom:.2rem">Precisa de ação</div>
+            <div data-k="a1" style="display:flex;align-items:center;gap:.6rem;padding:.4rem 0;border-top:1px solid #E7EBEE;opacity:0"><span style="font-family:ui-monospace,'Cascadia Mono',Consolas,monospace;font-size:.8rem;font-weight:600">BAL-014</span><span style="flex:1;min-width:0;font-size:.78rem;color:#505B65">Plataforma, expedição</span><span style="font-size:.72rem;font-weight:600;color:#CF2E2E;background:#FDECEC;border-radius:999px;padding:.12rem .55rem;white-space:nowrap">Vencido</span></div>
+            <div data-k="a2" style="display:flex;align-items:center;gap:.6rem;padding:.4rem 0;border-top:1px solid #E7EBEE;opacity:0"><span style="font-family:ui-monospace,'Cascadia Mono',Consolas,monospace;font-size:.8rem;font-weight:600">BAL-031</span><span style="flex:1;min-width:0;font-size:.78rem;color:#505B65">Bancada, envase linha 2</span><span style="font-size:.72rem;font-weight:600;color:#B14D00;background:#FFF3E2;border-radius:999px;padding:.12rem .55rem;white-space:nowrap">Vence</span></div>
+            <div data-k="a3" style="display:flex;align-items:center;gap:.6rem;padding:.4rem 0;border-top:1px solid #E7EBEE;opacity:0"><span style="font-family:ui-monospace,'Cascadia Mono',Consolas,monospace;font-size:.8rem;font-weight:600">BAL-007</span><span style="flex:1;min-width:0;font-size:.78rem;color:#505B65">Rodoviária, portaria</span><span style="font-size:.72rem;font-weight:600;color:#B14D00;background:#FFF3E2;border-radius:999px;padding:.12rem .55rem;white-space:nowrap">Vence</span></div>
+          </div>
+          <div style="background:#FFFFFF;border:1px solid #DDE2E7;border-radius:10px;padding:.7rem .8rem;display:flex;flex-direction:column;gap:.4rem">
+            <div style="font-family:'Barlow Semi Condensed',sans-serif;font-weight:600;font-size:1.05rem">Vencimentos por semana</div>
+            <div style="height:5.5rem;display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:.35rem;align-items:end">
+              <div data-k="bar1" style="height:40%;background:#1F5F99;border-radius:3px 3px 0 0;transform-origin:bottom;transform:scaleY(0)"></div>
+              <div data-k="bar2" style="height:60%;background:#1F5F99;border-radius:3px 3px 0 0;transform-origin:bottom;transform:scaleY(0)"></div>
+              <div data-k="bar3" style="height:80%;background:#E8A317;border-radius:3px 3px 0 0;transform-origin:bottom;transform:scaleY(0)"></div>
+              <div data-k="bar4" style="height:20%;background:#1F5F99;border-radius:3px 3px 0 0;transform-origin:bottom;transform:scaleY(0)"></div>
+              <div data-k="bar5" style="height:40%;background:#1F5F99;border-radius:3px 3px 0 0;transform-origin:bottom;transform:scaleY(0)"></div>
+              <div data-k="bar6" style="height:100%;background:#1F5F99;border-radius:3px 3px 0 0;transform-origin:bottom;transform:scaleY(0)"></div>
+              <div data-k="bar7" style="height:20%;background:#1F5F99;border-radius:3px 3px 0 0;transform-origin:bottom;transform:scaleY(0)"></div>
+              <div data-k="bar8" style="height:60%;background:#1F5F99;border-radius:3px 3px 0 0;transform-origin:bottom;transform:scaleY(0)"></div>
+            </div>
+            <div style="display:grid;grid-template-columns:repeat(8,minmax(0,1fr));gap:.35rem;text-align:center;font-size:.64rem;color:#505B65">
+              <span>S40</span><span>S41</span><span style="color:#1C232A;font-weight:700">S42</span><span>S43</span><span>S44</span><span>S45</span><span>S46</span><span>S47</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Celular -->
+      <div data-k="phoneWrap" style="position:absolute;inset:0;padding:.7rem;display:flex;justify-content:center;opacity:0">
+        <div style="height:100%;aspect-ratio:.53;max-width:100%;background:#1B222B;border-radius:1.7rem;padding:.45rem;display:flex">
+          <div style="position:relative;flex:1;min-width:0;background:#EDF0F3;border-radius:1.3rem;overflow:hidden;display:flex;flex-direction:column">
+            <div style="flex:none;display:flex;justify-content:space-between;align-items:center;padding:.55rem .9rem .2rem;font-size:.68rem;color:#505B65">
+              <span style="font-weight:600;color:#1C232A">08:12</span>
+              <span data-k="net" style="font-size:.64rem;font-weight:600;border-radius:999px;padding:.08rem .5rem;color:#16833A;background:#E6F6EC">Online</span>
+            </div>
+            <div style="position:relative;flex:1;min-height:0">
+
+              <!-- Inspeção de hoje -->
+              <div data-k="ph1" style="position:absolute;inset:0;padding:.4rem .8rem .8rem;display:flex;flex-direction:column;gap:.5rem;opacity:0">
+                <div>
+                  <div style="font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;font-size:1.3rem;line-height:1.05">Inspeção de hoje</div>
+                  <div style="display:flex;align-items:center;gap:.5rem;margin-top:.35rem"><div style="flex:1;height:.35rem;border-radius:2px;background:#DCE1E6;overflow:hidden"><div data-k="progBar" style="height:100%;width:100%;background:#1F5F99;transform-origin:left;transform:scaleX(.4)"></div></div><span data-k="prog" style="font-size:.72rem;color:#505B65;white-space:nowrap">2 de 5</span></div>
+                </div>
+                <div style="display:flex;flex-direction:column;gap:.3rem">
+                  <div style="background:#FFFFFF;border-radius:8px;padding:.45rem .6rem;display:flex;align-items:center;gap:.55rem"><div style="flex:none;width:1.15rem;height:1.15rem;border-radius:50%;background:#16833A;display:grid;place-items:center"><span style="width:.24rem;height:.46rem;border-right:2px solid #fff;border-bottom:2px solid #fff;transform:translateY(-.05rem) rotate(45deg)"></span></div><div style="min-width:0"><div style="font-family:ui-monospace,'Cascadia Mono',Consolas,monospace;font-size:.74rem;font-weight:600">BAL-003</div><div style="font-size:.66rem;color:#505B65">Bancada, laboratório</div></div></div>
+                  <div style="background:#FFFFFF;border-radius:8px;padding:.45rem .6rem;display:flex;align-items:center;gap:.55rem"><div style="flex:none;width:1.15rem;height:1.15rem;border-radius:50%;background:#16833A;display:grid;place-items:center"><span style="width:.24rem;height:.46rem;border-right:2px solid #fff;border-bottom:2px solid #fff;transform:translateY(-.05rem) rotate(45deg)"></span></div><div style="min-width:0"><div style="font-family:ui-monospace,'Cascadia Mono',Consolas,monospace;font-size:.74rem;font-weight:600">BAL-019</div><div style="font-size:.66rem;color:#505B65">Piso, recebimento</div></div></div>
+                  <div data-k="q3" style="background:#FFFFFF;border-radius:8px;padding:.45rem .6rem;display:flex;align-items:center;gap:.55rem;border:1.5px solid #1F5F99"><div data-k="qc3" style="flex:none;width:1.15rem;height:1.15rem;border-radius:50%;border:2px solid #C9D0D7;display:grid;place-items:center"><span data-k="qk3" style="width:.24rem;height:.46rem;border-right:2px solid #fff;border-bottom:2px solid #fff;transform:translateY(-.05rem) rotate(45deg);opacity:0"></span></div><div style="min-width:0"><div style="font-family:ui-monospace,'Cascadia Mono',Consolas,monospace;font-size:.74rem;font-weight:600">BAL-031</div><div style="font-size:.66rem;color:#505B65">Bancada, envase linha 2</div></div></div>
+                  <div style="background:#FFFFFF;border-radius:8px;padding:.45rem .6rem;display:flex;align-items:center;gap:.55rem"><div style="flex:none;width:1.15rem;height:1.15rem;border-radius:50%;border:2px solid #C9D0D7"></div><div style="min-width:0"><div style="font-family:ui-monospace,'Cascadia Mono',Consolas,monospace;font-size:.74rem;font-weight:600">BAL-040</div><div style="font-size:.66rem;color:#505B65">Bancada, envase linha 1</div></div></div>
+                  <div style="background:#FFFFFF;border-radius:8px;padding:.45rem .6rem;display:flex;align-items:center;gap:.55rem"><div style="flex:none;width:1.15rem;height:1.15rem;border-radius:50%;border:2px solid #C9D0D7"></div><div style="min-width:0"><div style="font-family:ui-monospace,'Cascadia Mono',Consolas,monospace;font-size:.74rem;font-weight:600">BAL-007</div><div style="font-size:.66rem;color:#505B65">Rodoviária, portaria</div></div></div>
+                </div>
+                <div style="margin-top:auto"><div data-k="btnInsp" style="background:#1F5F99;color:#fff;border-radius:10px;padding:.65rem;text-align:center;font-family:'Barlow Semi Condensed',sans-serif;font-weight:600;font-size:1.05rem">Inspeção</div></div>
+              </div>
+
+              <!-- Câmera -->
+              <div data-k="ph2" style="position:absolute;inset:0;background:#0B0F13;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:.8rem;padding:.8rem;opacity:0">
+                <div data-k="camTxt" style="position:absolute;top:42%;left:0;right:0;text-align:center;font-size:.8rem;color:#C9D0D7">Abrindo a câmera...</div>
+                <div data-k="vf" style="position:relative;width:72%;aspect-ratio:1/1;opacity:0">
+                  <div style="position:absolute;inset:12%;background:#FFFFFF;border-radius:6px;padding:7%;display:flex;flex-direction:column;align-items:center;gap:4%">
+                    <div data-k="qr2" style="width:78%;aspect-ratio:1/1"></div>
+                    <div style="font-family:ui-monospace,'Cascadia Mono',Consolas,monospace;font-size:.78rem;font-weight:700;color:#1C232A">BAL-031</div>
+                  </div>
+                  <div data-k="br1" style="position:absolute;left:0;top:0;width:18%;height:18%;border-left:3px solid #FFFFFF;border-top:3px solid #FFFFFF;border-radius:6px 0 0 0"></div>
+                  <div data-k="br2" style="position:absolute;right:0;top:0;width:18%;height:18%;border-right:3px solid #FFFFFF;border-top:3px solid #FFFFFF;border-radius:0 6px 0 0"></div>
+                  <div data-k="br3" style="position:absolute;right:0;bottom:0;width:18%;height:18%;border-right:3px solid #FFFFFF;border-bottom:3px solid #FFFFFF;border-radius:0 0 6px 0"></div>
+                  <div data-k="br4" style="position:absolute;left:0;bottom:0;width:18%;height:18%;border-left:3px solid #FFFFFF;border-bottom:3px solid #FFFFFF;border-radius:0 0 0 6px"></div>
+                  <div data-k="scan" style="position:absolute;left:6%;right:6%;top:10%;height:2px;background:#E8A317;opacity:0"></div>
+                </div>
+                <div data-k="rec" style="font-size:.74rem;font-weight:600;color:#0B0F13;background:#7FD49B;border-radius:999px;padding:.2rem .7rem;opacity:0">Etiqueta reconhecida</div>
+                <div data-k="camLink" style="position:absolute;bottom:1rem;left:0;right:0;text-align:center;font-size:.7rem;color:#9CC3E6;text-decoration:underline;opacity:0">Não leu? Tente pelo número da etiqueta</div>
+                <div data-k="scrim" style="position:absolute;inset:0;background:#000;opacity:0;visibility:hidden"></div>
+                <div data-k="sheet" style="position:absolute;left:0;right:0;bottom:0;background:#FFFFFF;border-radius:1rem 1rem 0 0;padding:.9rem .9rem 1rem;display:flex;flex-direction:column;gap:.55rem;transform:translateY(105%);visibility:hidden">
+                  <div style="width:2.2rem;height:.25rem;border-radius:2px;background:#C9D0D7;align-self:center"></div>
+                  <div><div style="font-family:ui-monospace,'Cascadia Mono',Consolas,monospace;font-size:1.05rem;font-weight:700">BAL-031</div><div style="font-size:.74rem;color:#505B65">Bancada · Envase linha 2</div></div>
+                  <div style="display:flex;flex-direction:column;gap:.35rem;font-size:.72rem">
+                    <div style="display:flex;justify-content:space-between;align-items:center;gap:.5rem"><span style="color:#505B65">Situação</span><span style="font-weight:600;color:#16833A;background:#E6F6EC;border-radius:999px;padding:.08rem .5rem;white-space:nowrap">Em operação</span></div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;gap:.5rem"><span style="color:#505B65">Calibração</span><span style="font-weight:600;color:#B14D00;background:#FFF3E2;border-radius:999px;padding:.08rem .5rem;white-space:nowrap">vence em 12 dias</span></div>
+                    <div style="display:flex;justify-content:space-between;align-items:center;gap:.5rem"><span style="color:#505B65">Verificação semanal</span><span style="font-weight:600;color:#B14D00;background:#FFF3E2;border-radius:999px;padding:.08rem .5rem;white-space:nowrap">pendente</span></div>
+                  </div>
+                  <div data-k="btnVer" style="background:#1F5F99;color:#fff;border-radius:10px;padding:.6rem;text-align:center;font-family:'Barlow Semi Condensed',sans-serif;font-weight:600;font-size:1.02rem">Verificação</div>
+                </div>
+              </div>
+
+              <!-- Verificação -->
+              <div data-k="ph4" style="position:absolute;inset:0;padding:.4rem .8rem .8rem;display:flex;flex-direction:column;gap:.55rem;opacity:0">
+                <div>
+                  <div style="font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;font-size:1.25rem;line-height:1.05">Registro da verificação</div>
+                  <div style="font-size:.7rem;color:#505B65;margin-top:.15rem"><span style="font-family:ui-monospace,'Cascadia Mono',Consolas,monospace;font-weight:600;color:#1C232A">BAL-031</span> · Bancada</div>
+                </div>
+                <div style="background:#FFFFFF;border-radius:8px;padding:.5rem .7rem"><div style="font-size:.66rem;color:#505B65">Peso de verificação</div><div style="font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;font-size:1.15rem">10,000 kg</div></div>
+                <div data-k="leitBox" style="background:#FFFFFF;border-radius:8px;padding:.5rem .7rem;border:1.5px solid #FFFFFF"><div style="font-size:.66rem;color:#505B65">Leitura</div><div style="font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;font-size:1.15rem;min-height:1.4rem"><span data-k="leit"></span> kg</div></div>
+                <div data-k="dif" style="font-size:.7rem;color:#16833A;opacity:0">Diferença +0,002 kg, dentro do limite</div>
+                <div>
+                  <div style="font-size:.66rem;color:#505B65;margin-bottom:.25rem">Resultado</div>
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:.4rem;font-family:'Barlow Semi Condensed',sans-serif;font-weight:700;font-size:1rem;text-align:center">
+                    <div data-k="okBtn" style="border:1.5px solid #C9D0D7;border-radius:8px;padding:.45rem 0;color:#505B65;background:#FFFFFF">OK</div>
+                    <div style="border:1.5px solid #C9D0D7;border-radius:8px;padding:.45rem 0;color:#505B65;background:#FFFFFF">NOK</div>
+                  </div>
+                </div>
+                <div style="margin-top:auto"><div data-k="btnSalvar" style="background:#1F5F99;color:#fff;border-radius:10px;padding:.65rem;text-align:center;font-family:'Barlow Semi Condensed',sans-serif;font-weight:600;font-size:1.05rem">Salvar</div></div>
+              </div>
+
+              <div style="position:absolute;left:0;right:0;bottom:3.8rem;display:flex;justify-content:center;padding:0 .6rem;pointer-events:none">
+                <div data-k="toast" style="background:#1B222B;color:#fff;border-radius:8px;padding:.5rem .7rem;font-size:.72rem;line-height:1.3;text-align:center;opacity:0;visibility:hidden"><span data-k="toastTxt"></span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div data-k="ripple" style="position:absolute;left:0;top:0;width:2.6rem;height:2.6rem;border-radius:50%;border:2px solid rgba(27,34,43,.5);opacity:0;pointer-events:none"></div>
+      <div data-k="finger" style="position:absolute;left:0;top:0;width:2.6rem;height:2.6rem;border-radius:50%;background:rgba(255,255,255,.5);border:1.5px solid rgba(27,34,43,.6);opacity:0;pointer-events:none"></div>
+    </div>
+  </div>
+
+  <div style="flex:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;font-size:.78rem;color:#A9B3BD">
+    <span>Demonstração com dados de exemplo</span>
+    <button data-k="pause" type="button" aria-pressed="false" style="background:transparent;border:1px solid #3A4652;color:#E6EAEE;border-radius:999px;padding:.3rem .9rem;font-family:inherit;font-size:.78rem;cursor:pointer">Pausar</button>
+  </div>
+</div>
+<script>
+(function () {
+  function frame(t, U) {
+    const { k, css, txt, seg, E, vis, scene, fade, press, bump, brl, type } = U;
+    const D = 19;
+    const T = { insp: 6.25, ver: 10.8, ok: 12.8, salvar: 13.5 };
+    const sc = (n, s) => css(k(n), { transform: `scale(${(1 - .05 * press(t, s)).toFixed(3)})` });
+
+    fade(k('cr1'), t, [[-1, 4.5], [D - .4, D + 1]]);
+    fade(k('cr2'), t, [[4.4, D - .3]]);
+
+    const dOut = seg(t, 4.1, 4.6, E.inOut);
+    vis(k('desk'), seg(t, 0, .4) * (1 - dOut), { transform: `scale(${(1 - .05 * dOut).toFixed(3)})` });
+    const cnt = seg(t, .4, 1.5, E.inOut);
+    txt(k('kv1'), Math.round(92 * cnt) + '%');
+    txt(k('kv2'), String(Math.round(4 * cnt)));
+    txt(k('kv3'), String(Math.round(48 * cnt)));
+    txt(k('kv4'), brl(1240 * cnt));
+    [.8, .95, 1.1].forEach((a, i) => { const p = seg(t, a, a + .35); css(k('a' + (i + 1)), { opacity: p.toFixed(3), transform: `translateX(${((1 - p) * .6).toFixed(3)}rem)` }); });
+    for (let i = 1; i <= 8; i++) css(k('bar' + i), { transform: `scaleY(${seg(t, 1.2 + i * .07, 1.65 + i * .07, E.back).toFixed(3)})` });
+
+    const pIn = seg(t, 4.35, 4.85), pOut = seg(t, D - .5, D, E.inOut);
+    vis(k('phoneWrap'), pIn * (1 - pOut), { transform: `translateY(${((1 - pIn) * 2).toFixed(3)}rem)` });
+
+    scene(k('ph1'), t, [[4.6, 6.85], [15.45, D + 1]], 1);
+    const dn = t > 16.0;
+    css(k('qc3'), { background: dn ? '#16833A' : 'transparent', borderColor: dn ? '#16833A' : '#C9D0D7', transform: `scale(${(1 + .35 * bump(t, 16.0)).toFixed(3)})` });
+    css(k('qk3'), { opacity: dn ? '1' : '0' });
+    css(k('q3'), { borderColor: dn ? '#FFFFFF' : '#1F5F99' });
+    txt(k('prog'), dn ? '3 de 5' : '2 de 5');
+    css(k('progBar'), { transform: `scaleX(${(.4 + .2 * seg(t, 16.0, 16.4)).toFixed(3)})` });
+    sc('btnInsp', T.insp);
+
+    scene(k('ph2'), t, [[6.75, 11.3]], 1);
+    vis(k('camTxt'), U.win(t, 6.8, 7.55, .2));
+    const vf = seg(t, 7.35, 7.7);
+    vis(k('vf'), vf, { transform: `scale(${(.92 + .08 * vf).toFixed(3)})` });
+    U.qr(k('qr2'), 31, '#1C232A');
+    const rec = t > 8.7;
+    ['br1', 'br2', 'br3', 'br4'].forEach(b => css(k(b), { borderColor: rec ? '#3FB772' : '#FFFFFF' }));
+    const sp = seg(t, 7.7, 8.65, E.lin);
+    vis(k('scan'), U.win(t, 7.7, 8.7, .1), { top: (10 + 80 * (.5 - .5 * Math.cos(sp * Math.PI * 2))).toFixed(2) + '%' });
+    vis(k('rec'), seg(t, 8.75, 9.0), { transform: `scale(${(1 + .12 * bump(t, 8.75)).toFixed(3)})` });
+    vis(k('camLink'), seg(t, 7.6, 7.9));
+    const sh = seg(t, 9.2, 9.6) * (1 - seg(t, 11.0, 11.3));
+    css(k('sheet'), { transform: `translateY(${((1 - seg(t, 9.2, 9.6)) * 105).toFixed(2)}%)`, visibility: t > 9.2 ? 'visible' : 'hidden' });
+    vis(k('scrim'), sh * .45);
+    sc('btnVer', T.ver);
+
+    scene(k('ph4'), t, [[11.15, 15.6]], 1);
+    type(k('leit'), '10,002', t, 11.75, 12.15);
+    css(k('leitBox'), { borderColor: t > 11.6 && t < 12.3 ? '#1F5F99' : '#FFFFFF' });
+    css(k('dif'), { opacity: seg(t, 12.25, 12.5).toFixed(3) });
+    const ok = t > T.ok - .02;
+    css(k('okBtn'), { background: ok ? '#16833A' : '#FFFFFF', borderColor: ok ? '#16833A' : '#C9D0D7', color: ok ? '#fff' : '#505B65', transform: `scale(${(1 - .06 * press(t, T.ok)).toFixed(3)})` });
+    sc('btnSalvar', T.salvar);
+
+    const off = t > 13.6 && t < 14.75;
+    txt(k('net'), off ? 'Sem conexão' : 'Online');
+    css(k('net'), { color: off ? '#B14D00' : '#16833A', background: off ? '#FFF3E2' : '#E6F6EC' });
+    U.toast(t, [[13.6, 14.65, 'Sem conexão. Registro guardado no aparelho.'], [14.8, 15.85, 'Conexão de volta. Registro enviado.']]);
+
+    const P = [
+      { t: 0, at: [.56, .96] }, { t: 5.3, at: [.56, .96] }, { t: T.insp - .1, k: 'btnInsp' }, { t: 7.3, at: [.56, .86] },
+      { t: T.ver - .1, k: 'btnVer' }, { t: T.ok - .1, k: 'okBtn' }, { t: T.salvar - .1, k: 'btnSalvar' }, { t: 14.6, at: [.56, .72] }
+    ];
+    U.finger(t, P, Object.values(T), seg(t, 5.3, 5.7) * (1 - seg(t, D - 1.2, D - .8)));
+  }
+  window.GoDemo.start({ root: document.querySelector('[data-demo="gqb"]'), duration: 19, still: 3.5, frame: frame });
+})();
+</script>
+</body>
+</html>

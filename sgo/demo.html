@@ -1,0 +1,299 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Demonstração do SGO</title>
+<!-- Feito no Claude Design (projeto "Demo SGO.dc.html"). Convertido para HTML puro: o runtime
+     de componentes do Claude Design saiu, e o quadro chama o motor js/go-demo-engine.js direto.
+     Marcação, cores e tempos são os do arquivo original. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
+<link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&amp;family=Hanken+Grotesk:wght@400;700&amp;display=swap" rel="stylesheet">
+<script src="../js/go-demo-engine.js"></script>
+<style>html,body{margin:0;height:100%;background:#0F1114;overflow:hidden}html{font-size:clamp(9.5px,min(2.2vw,2.7vh),14px)}*{box-sizing:border-box}a{color:#0A9E64}a:hover{color:#3FB772}</style>
+<style>[data-k="pause"]:hover,[data-k="pause"]:focus-visible{border-color:#8B94A1}</style>
+</head>
+<body>
+<div data-demo="sgo" data-screen-label="Demo SGO" style="position:fixed;inset:0;display:flex;flex-direction:column;gap:.5rem;padding:.8rem;background:#0F1114;color:#E4E7EC;font-family:'Hanken Grotesk',system-ui,sans-serif">
+  <p style="position:absolute;width:1px;height:1px;margin:0;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap">Demonstração do SGO: abrir um atendimento, agendar a visita, montar o orçamento, colher a assinatura, gerar a O.S. e ver as parcelas em contas a receber.</p>
+
+  <div aria-hidden="true" style="flex:1;min-height:0;display:flex;flex-direction:column;border:1px solid #2A2F37;border-radius:14px;overflow:hidden;background:#0F1114">
+    <div style="flex:none;height:2.5rem;display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:0 1rem;background:#171A1F;border-bottom:1px solid #2A2F37">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 2627 784" style="height:1rem;width:3.35rem;color:#F4F5F7;flex:none"><path fill="#0A9E64" d="M0 521H236Q240 547 261.5 566.5Q283 586 320.0 596.5Q357 607 407 607Q476 607 514.5 591.0Q553 575 553 542Q553 519 531.0 504.5Q509 490 444 485L312 474Q150 462 77.5 403.5Q5 345 5 246Q5 165 52.0 110.5Q99 56 183.0 28.0Q267 0 381 0Q491 0 576.5 31.0Q662 62 712.5 118.5Q763 175 768 250H532Q528 228 509.5 211.5Q491 195 457.0 186.0Q423 177 376 177Q314 177 277.5 192.0Q241 207 241 237Q241 259 262.5 273.0Q284 287 342 292L487 304Q595 312 661.5 337.5Q728 363 758.0 406.5Q788 450 788 516Q788 596 740.0 656.5Q692 717 605.5 750.5Q519 784 403 784Q284 784 194.0 751.0Q104 718 53.0 658.5Q2 599 0 521Z"></path><path fill="currentColor" d="M1610 443Q1607 509 1583.0 570.5Q1559 632 1513.0 680.5Q1467 729 1397.0 756.5Q1327 784 1233 784Q1145 784 1068.0 758.5Q991 733 932.0 683.5Q873 634 839.5 561.0Q806 488 806 392Q806 296 839.5 223.0Q873 150 933.5 100.5Q994 51 1073.5 25.5Q1153 0 1245 0Q1372 0 1463.5 38.0Q1555 76 1611.0 143.0Q1667 210 1683 297H1449Q1440 264 1411.5 240.5Q1383 217 1341.0 204.5Q1299 192 1247 192Q1183 192 1136.5 214.0Q1090 236 1065.0 280.0Q1040 324 1040 392Q1040 460 1067.5 506.0Q1095 552 1146.5 575.0Q1198 598 1268 598Q1336 598 1388.5 580.0Q1441 562 1473.0 527.0Q1505 492 1511 440ZM1286 534V372H1690V767H1527L1493 475L1536 534Z"></path><path fill="currentColor" d="M2176 784Q2041 784 1939.5 735.0Q1838 686 1781.5 598.0Q1725 510 1725 392Q1725 274 1781.5 186.0Q1838 98 1939.5 49.0Q2041 0 2176 0Q2311 0 2412.5 49.0Q2514 98 2570.5 186.0Q2627 274 2627 392Q2627 510 2570.5 598.0Q2514 686 2412.5 735.0Q2311 784 2176 784ZM2176 577Q2243 577 2291.5 554.5Q2340 532 2366.0 490.5Q2392 449 2392 392Q2392 335 2366.0 293.5Q2340 252 2291.5 229.5Q2243 207 2176 207Q2109 207 2060.5 229.5Q2012 252 1986.0 293.5Q1960 335 1960 392Q1960 449 1986.0 490.5Q2012 532 2060.5 554.5Q2109 577 2176 577Z"></path></svg>
+      <div style="display:grid;justify-items:end;font-size:.78rem;color:#8B94A1;white-space:nowrap">
+        <span data-k="cr1" style="grid-area:1/1;color:#E4E7EC">Início</span>
+        <span data-k="cr2" style="grid-area:1/1;opacity:0">Serviço / <span style="color:#E4E7EC">Atendimentos</span></span>
+        <span data-k="cr3" style="grid-area:1/1;opacity:0">Financeiro / <span style="color:#E4E7EC">Contas a receber</span></span>
+      </div>
+    </div>
+
+    <div data-k="screen" style="position:relative;flex:1;min-height:0;overflow:hidden">
+
+      <!-- 1 Início -->
+      <div data-k="s1" style="position:absolute;inset:0;padding:1.1rem 1.2rem;display:flex;flex-direction:column;gap:.8rem;opacity:0">
+        <div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.9rem;line-height:1">Bom dia</div>
+          <div style="font-size:.86rem;color:#8B94A1;margin-top:.25rem">Escolha um módulo para começar.</div>
+        </div>
+        <div style="flex:1;min-height:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr));grid-auto-rows:minmax(0,1fr);gap:.5rem">
+          <div data-k="tile1" style="min-width:0;background:#171A1F;border:1px solid #2A2F37;border-radius:10px;padding:.6rem .65rem;display:flex;flex-direction:column;gap:.3rem;opacity:0"><div style="width:1.2rem;height:1.2rem;border-radius:4px;background:#00a2c7;flex:none"></div><div style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1.05rem;line-height:1.05">Serviço</div><div style="font-size:.7rem;line-height:1.25;color:#8B94A1">Ordens de serviço e assistência</div></div>
+          <div data-k="tile2" style="min-width:0;background:#171A1F;border:1px solid #2A2F37;border-radius:10px;padding:.6rem .65rem;display:flex;flex-direction:column;gap:.3rem;opacity:0"><div style="width:1.2rem;height:1.2rem;border-radius:4px;background:#8e4ec6;flex:none"></div><div style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1.05rem;line-height:1.05">Vendas</div><div style="font-size:.7rem;line-height:1.25;color:#8B94A1">Orçamentos, pedidos e clientes</div></div>
+          <div data-k="tile3" style="min-width:0;background:#171A1F;border:1px solid #2A2F37;border-radius:10px;padding:.6rem .65rem;display:flex;flex-direction:column;gap:.3rem;opacity:0"><div style="width:1.2rem;height:1.2rem;border-radius:4px;background:#12a594;flex:none"></div><div style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1.05rem;line-height:1.05">Calibração</div><div style="font-size:.7rem;line-height:1.25;color:#8B94A1">Certificados e padrões</div></div>
+          <div data-k="tile4" style="min-width:0;background:#171A1F;border:1px solid #2A2F37;border-radius:10px;padding:.6rem .65rem;display:flex;flex-direction:column;gap:.3rem;opacity:0"><div style="width:1.2rem;height:1.2rem;border-radius:4px;background:#30a46c;flex:none"></div><div style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1.05rem;line-height:1.05">Qualidade</div><div style="font-size:.7rem;line-height:1.25;color:#8B94A1">Não conformidades e auditorias</div></div>
+          <div data-k="tile5" style="min-width:0;background:#171A1F;border:1px solid #2A2F37;border-radius:10px;padding:.6rem .65rem;display:flex;flex-direction:column;gap:.3rem;opacity:0"><div style="width:1.2rem;height:1.2rem;border-radius:4px;background:#46a758;flex:none"></div><div style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1.05rem;line-height:1.05">Análise</div><div style="font-size:.7rem;line-height:1.25;color:#8B94A1">Relatórios e indicadores</div></div>
+          <div data-k="tile6" style="min-width:0;background:#171A1F;border:1px solid #2A2F37;border-radius:10px;padding:.6rem .65rem;display:flex;flex-direction:column;gap:.3rem;opacity:0"><div style="width:1.2rem;height:1.2rem;border-radius:4px;background:#5bb318;flex:none"></div><div style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1.05rem;line-height:1.05">Financeiro</div><div style="font-size:.7rem;line-height:1.25;color:#8B94A1">Contas a pagar e receber</div></div>
+          <div data-k="tile7" style="min-width:0;background:#171A1F;border:1px solid #2A2F37;border-radius:10px;padding:.6rem .65rem;display:flex;flex-direction:column;gap:.3rem;opacity:0"><div style="width:1.2rem;height:1.2rem;border-radius:4px;background:#7cb518;flex:none"></div><div style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1.05rem;line-height:1.05">Caixa</div><div style="font-size:.7rem;line-height:1.25;color:#8B94A1">Movimentação diária de caixa</div></div>
+          <div data-k="tile8" style="min-width:0;background:#171A1F;border:1px solid #2A2F37;border-radius:10px;padding:.6rem .65rem;display:flex;flex-direction:column;gap:.3rem;opacity:0"><div style="width:1.2rem;height:1.2rem;border-radius:4px;background:#e5484d;flex:none"></div><div style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1.05rem;line-height:1.05">Administrativo</div><div style="font-size:.7rem;line-height:1.25;color:#8B94A1">Cadastros, usuários e configurações</div></div>
+          <div data-k="tile9" style="min-width:0;background:#171A1F;border:1px solid #2A2F37;border-radius:10px;padding:.6rem .65rem;display:flex;flex-direction:column;gap:.3rem;opacity:0"><div style="width:1.2rem;height:1.2rem;border-radius:4px;background:#0090ff;flex:none"></div><div style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1.05rem;line-height:1.05">Mobile</div><div style="font-size:.7rem;line-height:1.25;color:#8B94A1">Acesso e apps de campo</div></div>
+        </div>
+      </div>
+
+      <!-- 2 Novo atendimento -->
+      <div data-k="s2" style="position:absolute;inset:0;padding:1.1rem 1.2rem;display:flex;flex-direction:column;gap:.8rem;opacity:0">
+        <div>
+          <div style="font-size:.74rem;color:#8B94A1">Serviço</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.7rem;line-height:1">Novo atendimento</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(12rem,1fr));gap:.6rem .8rem">
+          <div style="display:flex;flex-direction:column;gap:.3rem"><div style="font-size:.74rem;color:#8B94A1">Cliente</div><div data-k="fb1" style="min-height:2.3rem;display:flex;align-items:center;padding:0 .7rem;background:#171A1F;border:1px solid #2A2F37;border-radius:8px;font-size:.92rem"><span data-k="f1"></span></div></div>
+          <div style="display:flex;flex-direction:column;gap:.3rem"><div style="font-size:.74rem;color:#8B94A1">Balança</div><div data-k="fb2" style="min-height:2.3rem;display:flex;align-items:center;padding:0 .7rem;background:#171A1F;border:1px solid #2A2F37;border-radius:8px;font-size:.92rem"><span data-k="f2"></span></div></div>
+          <div style="display:flex;flex-direction:column;gap:.3rem"><div style="font-size:.74rem;color:#8B94A1">Problema</div><div data-k="fb3" style="min-height:2.3rem;display:flex;align-items:center;padding:0 .7rem;background:#171A1F;border:1px solid #2A2F37;border-radius:8px;font-size:.92rem"><span data-k="f3"></span></div></div>
+          <div style="display:flex;flex-direction:column;gap:.3rem"><div style="font-size:.74rem;color:#8B94A1">Urgência</div>
+            <div style="min-height:2.3rem;display:grid;grid-template-columns:repeat(3,1fr);gap:.25rem;padding:.25rem;background:#171A1F;border:1px solid #2A2F37;border-radius:8px;font-size:.86rem">
+              <div style="display:flex;align-items:center;justify-content:center;border-radius:6px;color:#8B94A1">Baixa</div>
+              <div style="display:flex;align-items:center;justify-content:center;border-radius:6px;color:#8B94A1">Normal</div>
+              <div data-k="u3" style="display:flex;align-items:center;justify-content:center;border-radius:6px;color:#8B94A1">Alta</div>
+            </div>
+          </div>
+        </div>
+        <div style="margin-top:auto;display:flex;justify-content:flex-end">
+          <div data-k="btnAbrir" style="background:#0A9E64;color:#fff;border-radius:8px;padding:.7rem 1.3rem;font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1.08rem;letter-spacing:.02em">Abrir atendimento</div>
+        </div>
+      </div>
+
+      <!-- 3 Atendimento -->
+      <div data-k="s3" style="position:absolute;inset:0;padding:1.1rem 1.2rem;display:flex;flex-direction:column;gap:.8rem;opacity:0">
+        <div>
+          <div style="font-size:.74rem;color:#8B94A1">Atendimento · Padaria Central</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.7rem;line-height:1">Protocolo 2026-0148</div>
+        </div>
+        <div style="display:grid;grid-template-columns:repeat(6,minmax(0,1fr))">
+          <div style="position:relative;display:flex;flex-direction:column;align-items:center;gap:.3rem;min-width:0"><div style="position:absolute;top:.7rem;left:50%;width:100%;height:2px;background:#2A2F37"><div data-k="l1" style="height:100%;background:#0A9E64;transform-origin:left;transform:scaleX(0)"></div></div><div data-k="d1" style="position:relative;width:1.4rem;height:1.4rem;border-radius:50%;border:2px solid #2A2F37;background:#171A1F;display:flex;align-items:center;justify-content:center"><span data-k="k1" style="width:.32rem;height:.6rem;border-right:2px solid #fff;border-bottom:2px solid #fff;transform:translateY(-.06rem) rotate(45deg);opacity:0"></span></div><div data-k="n1" style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.8rem;line-height:1.1;color:#8B94A1;text-align:center">Registrado</div></div>
+          <div style="position:relative;display:flex;flex-direction:column;align-items:center;gap:.3rem;min-width:0"><div style="position:absolute;top:.7rem;left:50%;width:100%;height:2px;background:#2A2F37"><div data-k="l2" style="height:100%;background:#0A9E64;transform-origin:left;transform:scaleX(0)"></div></div><div data-k="d2" style="position:relative;width:1.4rem;height:1.4rem;border-radius:50%;border:2px solid #2A2F37;background:#171A1F;display:flex;align-items:center;justify-content:center"><span data-k="k2" style="width:.32rem;height:.6rem;border-right:2px solid #fff;border-bottom:2px solid #fff;transform:translateY(-.06rem) rotate(45deg);opacity:0"></span></div><div data-k="n2" style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.8rem;line-height:1.1;color:#8B94A1;text-align:center">Agendado</div></div>
+          <div style="position:relative;display:flex;flex-direction:column;align-items:center;gap:.3rem;min-width:0"><div style="position:absolute;top:.7rem;left:50%;width:100%;height:2px;background:#2A2F37"><div data-k="l3" style="height:100%;background:#0A9E64;transform-origin:left;transform:scaleX(0)"></div></div><div data-k="d3" style="position:relative;width:1.4rem;height:1.4rem;border-radius:50%;border:2px solid #2A2F37;background:#171A1F;display:flex;align-items:center;justify-content:center"><span data-k="k3" style="width:.32rem;height:.6rem;border-right:2px solid #fff;border-bottom:2px solid #fff;transform:translateY(-.06rem) rotate(45deg);opacity:0"></span></div><div data-k="n3" style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.8rem;line-height:1.1;color:#8B94A1;text-align:center">Visita</div></div>
+          <div style="position:relative;display:flex;flex-direction:column;align-items:center;gap:.3rem;min-width:0"><div style="position:absolute;top:.7rem;left:50%;width:100%;height:2px;background:#2A2F37"><div data-k="l4" style="height:100%;background:#0A9E64;transform-origin:left;transform:scaleX(0)"></div></div><div data-k="d4" style="position:relative;width:1.4rem;height:1.4rem;border-radius:50%;border:2px solid #2A2F37;background:#171A1F;display:flex;align-items:center;justify-content:center"><span data-k="k4" style="width:.32rem;height:.6rem;border-right:2px solid #fff;border-bottom:2px solid #fff;transform:translateY(-.06rem) rotate(45deg);opacity:0"></span></div><div data-k="n4" style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.8rem;line-height:1.1;color:#8B94A1;text-align:center">Orçamento</div></div>
+          <div style="position:relative;display:flex;flex-direction:column;align-items:center;gap:.3rem;min-width:0"><div style="position:absolute;top:.7rem;left:50%;width:100%;height:2px;background:#2A2F37"><div data-k="l5" style="height:100%;background:#0A9E64;transform-origin:left;transform:scaleX(0)"></div></div><div data-k="d5" style="position:relative;width:1.4rem;height:1.4rem;border-radius:50%;border:2px solid #2A2F37;background:#171A1F;display:flex;align-items:center;justify-content:center"><span data-k="k5" style="width:.32rem;height:.6rem;border-right:2px solid #fff;border-bottom:2px solid #fff;transform:translateY(-.06rem) rotate(45deg);opacity:0"></span></div><div data-k="n5" style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.8rem;line-height:1.1;color:#8B94A1;text-align:center">Aceite</div></div>
+          <div style="position:relative;display:flex;flex-direction:column;align-items:center;gap:.3rem;min-width:0"><div data-k="d6" style="position:relative;width:1.4rem;height:1.4rem;border-radius:50%;border:2px solid #2A2F37;background:#171A1F;display:flex;align-items:center;justify-content:center"><span data-k="k6" style="width:.32rem;height:.6rem;border-right:2px solid #fff;border-bottom:2px solid #fff;transform:translateY(-.06rem) rotate(45deg);opacity:0"></span></div><div data-k="n6" style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:.8rem;line-height:1.1;color:#8B94A1;text-align:center">O.S.</div></div>
+        </div>
+        <div style="display:grid;font-size:.84rem;line-height:1.35">
+          <div data-k="b1" style="grid-area:1/1;padding:.6rem .8rem;background:#171A1F;border:1px solid #2A2F37;border-radius:8px"><b style="color:#0A9E64">Agora:</b> Agendar a visita (ou a coleta) com data, hora e técnico.</div>
+          <div data-k="b2" style="grid-area:1/1;padding:.6rem .8rem;background:#171A1F;border:1px solid #2A2F37;border-radius:8px;opacity:0"><b style="color:#0A9E64">Agora:</b> Registrar a chegada do técnico no cliente.</div>
+          <div data-k="b3" style="grid-area:1/1;padding:.6rem .8rem;background:#171A1F;border:1px solid #2A2F37;border-radius:8px;opacity:0"><b style="color:#0A9E64">Agora:</b> Montar o orçamento com o cliente.</div>
+          <div data-k="b4" style="grid-area:1/1;padding:.6rem .8rem;background:#171A1F;border:1px solid #2A2F37;border-radius:8px;opacity:0"><b style="color:#0A9E64">Agora:</b> Gerar a O.S. e executar o serviço.</div>
+        </div>
+        <div style="display:grid;grid-template-columns:auto minmax(0,1fr);gap:.3rem .9rem;font-size:.84rem">
+          <span style="color:#8B94A1">Balança</span><span>Bancada 15 kg</span>
+          <span style="color:#8B94A1">Problema</span><span>Não estabiliza o peso</span>
+          <span style="color:#8B94A1">Urgência</span><span style="color:#E0A33A">Alta</span>
+          <span data-k="agL" style="color:#8B94A1;opacity:0">Visita</span><span data-k="agV" style="opacity:0">14/10/2026, 14:00 · Paulo</span>
+        </div>
+        <div style="margin-top:auto;display:grid;justify-items:start">
+          <div data-k="a1" style="grid-area:1/1;background:#0A9E64;color:#fff;border-radius:8px;padding:.7rem 1.3rem;font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1.08rem;letter-spacing:.02em">Agendar visita</div>
+          <div data-k="a2" style="grid-area:1/1;background:#0A9E64;color:#fff;border-radius:8px;padding:.7rem 1.3rem;font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1.08rem;letter-spacing:.02em;opacity:0">Cheguei no cliente</div>
+          <div data-k="a3" style="grid-area:1/1;background:#0A9E64;color:#fff;border-radius:8px;padding:.7rem 1.3rem;font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1.08rem;letter-spacing:.02em;opacity:0">Montar orçamento</div>
+          <div data-k="a4" style="grid-area:1/1;background:#0A9E64;color:#fff;border-radius:8px;padding:.7rem 1.3rem;font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1.08rem;letter-spacing:.02em;opacity:0">Gerar O.S. e executar</div>
+        </div>
+        <div data-k="scrim" style="position:absolute;inset:0;background:#000;opacity:0;visibility:hidden"></div>
+        <div data-k="sheet" style="position:absolute;left:0;right:0;bottom:0;padding:1.1rem 1.2rem 1.2rem;background:#171A1F;border-top:1px solid #2A2F37;border-radius:14px 14px 0 0;display:flex;flex-direction:column;gap:.75rem;transform:translateY(105%);visibility:hidden">
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.3rem;line-height:1">Agendar visita</div>
+          <div style="display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.6rem">
+            <div style="display:flex;flex-direction:column;gap:.3rem"><div style="font-size:.74rem;color:#8B94A1">Data</div><div style="min-height:2.2rem;display:flex;align-items:center;padding:0 .7rem;background:#0F1114;border:1px solid #2A2F37;border-radius:8px;font-size:.92rem"><span data-k="fDate"></span></div></div>
+            <div style="display:flex;flex-direction:column;gap:.3rem"><div style="font-size:.74rem;color:#8B94A1">Hora</div><div style="min-height:2.2rem;display:flex;align-items:center;padding:0 .7rem;background:#0F1114;border:1px solid #2A2F37;border-radius:8px;font-size:.92rem"><span data-k="fHora"></span></div></div>
+          </div>
+          <div style="display:flex;flex-direction:column;gap:.3rem"><div style="font-size:.74rem;color:#8B94A1">Técnico</div>
+            <div style="display:flex;flex-wrap:wrap;gap:.4rem;font-size:.88rem">
+              <div data-k="tecPaulo" style="padding:.45rem .9rem;border:1px solid #2A2F37;border-radius:999px">Paulo</div>
+              <div style="padding:.45rem .9rem;border:1px solid #2A2F37;border-radius:999px;color:#8B94A1">Marcos</div>
+              <div style="padding:.45rem .9rem;border:1px solid #2A2F37;border-radius:999px;color:#8B94A1">Renata</div>
+            </div>
+          </div>
+          <div style="display:flex;justify-content:flex-end"><div data-k="btnConf" style="background:#0A9E64;color:#fff;border-radius:8px;padding:.6rem 1.2rem;font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1.05rem;letter-spacing:.02em">Confirmar</div></div>
+        </div>
+      </div>
+
+      <!-- 5 Orçamento -->
+      <div data-k="s5" style="position:absolute;inset:0;padding:1.1rem 1.2rem;display:flex;flex-direction:column;gap:.6rem;opacity:0">
+        <div>
+          <div style="font-size:.74rem;color:#8B94A1">Protocolo 2026-0148 · Padaria Central</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.7rem;line-height:1">Orçamento</div>
+        </div>
+        <div style="display:flex;flex-direction:column">
+          <div data-k="i1" style="display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.6rem 0;border-bottom:1px solid #2A2F37;opacity:0"><div style="min-width:0"><div style="font-size:.92rem">Célula de carga 15 kg</div><div style="font-size:.72rem;color:#8B94A1">Peça</div></div><div style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1.15rem;white-space:nowrap;border-bottom:1px dashed #8B94A1">R$ 380,00</div></div>
+          <div data-k="i2" style="display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.6rem 0;border-bottom:1px solid #2A2F37;opacity:0"><div style="min-width:0"><div style="font-size:.92rem">Mão de obra</div><div style="font-size:.72rem;color:#8B94A1">Serviço</div></div><div style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1.15rem;white-space:nowrap">R$ 150,00</div></div>
+          <div data-k="i3" style="display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:.6rem 0;border-bottom:1px solid #2A2F37;opacity:0"><div style="min-width:0"><div style="font-size:.92rem">Deslocamento</div><div style="font-size:.72rem;color:#8B94A1">Calculado pela distância (14 km)</div></div><div style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1.15rem;white-space:nowrap">R$ 42,00</div></div>
+        </div>
+        <div data-k="hint" style="font-size:.74rem;color:#8B94A1;opacity:0">Preço de tabela; toque no preço para mudar.</div>
+        <div style="margin-top:auto;display:flex;justify-content:space-between;align-items:flex-end;gap:1rem;flex-wrap:wrap">
+          <div><div style="font-size:.74rem;color:#8B94A1">Total</div><div data-k="total" style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:2.1rem;line-height:1">R$ 0,00</div></div>
+          <div data-k="btnAssinar" style="background:#0A9E64;color:#fff;border-radius:8px;padding:.7rem 1.3rem;font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1.08rem;letter-spacing:.02em">Colher assinatura</div>
+        </div>
+      </div>
+
+      <!-- 6 Assinatura -->
+      <div data-k="s6" style="position:absolute;inset:0;padding:1.1rem 1.2rem;display:flex;flex-direction:column;gap:.7rem;opacity:0">
+        <div>
+          <div style="font-size:.74rem;color:#8B94A1">Orçamento R$ 572,00 · Padaria Central</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.7rem;line-height:1">Assinatura do cliente</div>
+        </div>
+        <div style="position:relative;width:100%;aspect-ratio:3/1;max-height:14rem;background:#FFFFFF;border-radius:10px;overflow:hidden">
+          <div style="position:absolute;left:8%;right:8%;bottom:22%;height:1px;background:#C9CED6"></div>
+          <div data-k="sigPh" style="position:absolute;left:8%;bottom:8%;font-size:.74rem;color:#6B7480">Assine aqui</div>
+          <svg data-k="sigSvg" viewBox="0 0 300 100" style="position:absolute;inset:0;width:100%;height:100%"><path data-k="sig" d="M18 68 C30 30 48 22 52 46 C55 66 40 82 34 70 C28 58 60 40 78 52 C90 60 86 74 98 66 C110 58 112 40 124 46 C134 52 128 70 140 66 C156 60 160 38 172 44 C182 50 176 70 190 66 C206 62 214 48 226 52 C238 56 236 66 248 62 C262 58 272 54 286 50" style="fill:none;stroke:#1C232A;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke-dasharray:1000;stroke-dashoffset:1000"></path></svg>
+        </div>
+        <div data-k="sigName" style="font-size:.8rem;color:#8B94A1;opacity:0">Assinado por Marta Souza, Padaria Central</div>
+        <div style="margin-top:auto;display:flex;justify-content:flex-end;gap:.6rem">
+          <div style="border:1px solid #2A2F37;color:#E4E7EC;border-radius:8px;padding:.7rem 1.1rem;font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1.08rem">Limpar</div>
+          <div data-k="btnAceite" style="background:#0A9E64;color:#fff;border-radius:8px;padding:.7rem 1.3rem;font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1.08rem;letter-spacing:.02em">Confirmar aceite</div>
+        </div>
+      </div>
+
+      <!-- 8 Contas a receber -->
+      <div data-k="s8" style="position:absolute;inset:0;padding:1.1rem 1.2rem;display:flex;flex-direction:column;gap:.8rem;opacity:0">
+        <div>
+          <div style="font-size:.74rem;color:#8B94A1">Financeiro</div>
+          <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.7rem;line-height:1">Contas a receber</div>
+        </div>
+        <div data-k="card" style="background:#171A1F;border:1px solid #2A2F37;border-radius:10px;padding:.9rem 1rem;display:flex;flex-direction:column;gap:.7rem">
+          <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:1rem">
+            <div><div style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1.15rem;line-height:1.1">O.S. 2026-0148</div><div style="font-size:.8rem;color:#8B94A1">Padaria Central · 3 parcelas</div></div>
+            <div style="font-family:'Barlow Condensed',sans-serif;font-weight:700;font-size:1.5rem;line-height:1;white-space:nowrap">R$ 572,00</div>
+          </div>
+          <div style="display:flex;flex-direction:column;font-size:.84rem">
+            <div data-k="p1" style="display:grid;grid-template-columns:2.2rem minmax(0,1fr) auto auto;gap:.7rem;align-items:center;padding:.5rem 0;border-top:1px solid #2A2F37;opacity:0"><span style="color:#8B94A1">1/3</span><span>28 dias · 11/11/2026</span><span style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1.05rem">R$ 190,66</span><span style="font-size:.72rem;color:#E0A33A;border:1px solid #E0A33A;border-radius:999px;padding:.1rem .5rem;white-space:nowrap">A receber</span></div>
+            <div data-k="p2" style="display:grid;grid-template-columns:2.2rem minmax(0,1fr) auto auto;gap:.7rem;align-items:center;padding:.5rem 0;border-top:1px solid #2A2F37;opacity:0"><span style="color:#8B94A1">2/3</span><span>56 dias · 09/12/2026</span><span style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1.05rem">R$ 190,67</span><span style="font-size:.72rem;color:#E0A33A;border:1px solid #E0A33A;border-radius:999px;padding:.1rem .5rem;white-space:nowrap">A receber</span></div>
+            <div data-k="p3" style="display:grid;grid-template-columns:2.2rem minmax(0,1fr) auto auto;gap:.7rem;align-items:center;padding:.5rem 0;border-top:1px solid #2A2F37;opacity:0"><span style="color:#8B94A1">3/3</span><span>84 dias · 06/01/2027</span><span style="font-family:'Barlow Condensed',sans-serif;font-weight:600;font-size:1.05rem">R$ 190,67</span><span style="font-size:.72rem;color:#E0A33A;border:1px solid #E0A33A;border-radius:999px;padding:.1rem .5rem;white-space:nowrap">A receber</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div style="position:absolute;left:0;right:0;bottom:1rem;display:flex;justify-content:center;padding:0 1rem;pointer-events:none">
+        <div data-k="toast" style="background:#050607;border:1px solid #2A2F37;color:#fff;border-radius:8px;padding:.6rem 1rem;font-size:.86rem;text-align:center;opacity:0;visibility:hidden"><span data-k="toastTxt"></span></div>
+      </div>
+      <div data-k="ripple" style="position:absolute;left:0;top:0;width:2.6rem;height:2.6rem;border-radius:50%;border:2px solid rgba(255,255,255,.7);opacity:0;pointer-events:none"></div>
+      <div data-k="finger" style="position:absolute;left:0;top:0;width:2.6rem;height:2.6rem;border-radius:50%;background:rgba(255,255,255,.28);border:1.5px solid rgba(255,255,255,.8);opacity:0;pointer-events:none"></div>
+    </div>
+  </div>
+
+  <div style="flex:none;display:flex;justify-content:space-between;align-items:center;gap:1rem;font-size:.78rem;color:#8B94A1">
+    <span>Demonstração com dados de exemplo</span>
+    <button data-k="pause" type="button" aria-pressed="false" style="background:transparent;border:1px solid #2A2F37;color:#E4E7EC;border-radius:999px;padding:.3rem .9rem;font-family:inherit;font-size:.78rem;cursor:pointer">Pausar</button>
+  </div>
+</div>
+<script>
+(function () {
+  function frame(t, U) {
+    const { k, css, txt, seg, E, vis, scene, fade, press, bump, brl, type } = U;
+    const D = 21.5;
+    const T = { servico: 2.0, alta: 4.9, abrir: 5.25, agendar: 6.25, paulo: 7.6, conf: 8.2, cheguei: 9.45, orc: 10.5, assinar: 13.1, aceite: 15.05, gerar: 16.75 };
+
+    fade(k('cr1'), t, [[-1, T.servico + .7]]);
+    fade(k('cr2'), t, [[T.servico + .6, T.gerar + 1.35]]);
+    fade(k('cr3'), t, [[T.gerar + 1.25, D + 1]]);
+
+    scene(k('s1'), t, [[0, T.servico + .75]]);
+    for (let i = 1; i <= 9; i++) {
+      const p = seg(t, .1 + i * .05, .5 + i * .05);
+      const s = i === 1 ? 1 - .05 * press(t, T.servico) : 1;
+      css(k('tile' + i), { opacity: p.toFixed(3), transform: `translateY(${((1 - p) * .6).toFixed(3)}rem) scale(${s.toFixed(3)})` });
+    }
+    css(k('tile1'), { borderColor: t > T.servico - .02 ? '#00a2c7' : '#2A2F37' });
+
+    scene(k('s2'), t, [[T.servico + .6, T.abrir + .35]]);
+    [['f1', 'fb1', 'Padaria Central', 2.95, 3.5], ['f2', 'fb2', 'Bancada 15 kg', 3.65, 4.1], ['f3', 'fb3', 'Não estabiliza o peso', 4.2, 4.75]].forEach(([f, b, s, a, z]) => {
+      type(k(f), s, t, a, z);
+      css(k(b), { borderColor: t > a - .1 && t < z + .15 ? '#0A9E64' : '#2A2F37' });
+    });
+    const alta = t > T.alta - .02;
+    css(k('u3'), { background: alta ? '#0A9E64' : 'transparent', color: alta ? '#fff' : '#8B94A1', transform: `scale(${(1 - .08 * press(t, T.alta)).toFixed(3)})` });
+    css(k('btnAbrir'), { transform: `scale(${(1 - .05 * press(t, T.abrir)).toFixed(3)})` });
+
+    scene(k('s3'), t, [[T.abrir + .2, T.orc + .35], [T.aceite + .5, T.gerar + 1.4]]);
+    const done = [-1, T.conf, T.cheguei, T.aceite, T.aceite, T.gerar];
+    const cur = done.findIndex(d => t < d);
+    for (let i = 0; i < 6; i++) {
+      const ok = t >= done[i], on = ok || i === cur;
+      css(k('d' + (i + 1)), { background: ok ? '#0A9E64' : '#171A1F', borderColor: on ? '#0A9E64' : '#2A2F37', transform: `scale(${(1 + .3 * bump(t, done[i])).toFixed(3)})` });
+      css(k('k' + (i + 1)), { opacity: ok ? '1' : '0' });
+      css(k('n' + (i + 1)), { color: on ? '#E4E7EC' : '#8B94A1' });
+      if (i < 5) css(k('l' + (i + 1)), { transform: `scaleX(${seg(t, done[i + 1], done[i + 1] + .4).toFixed(3)})` });
+    }
+    const bw = [[-1, T.conf + .1], [T.conf, T.cheguei + .15], [T.cheguei + .05, T.orc + .5], [T.aceite + .4, D]];
+    for (let i = 0; i < 4; i++) {
+      fade(k('b' + (i + 1)), t, [bw[i]]);
+      fade(k('a' + (i + 1)), t, [bw[i]]);
+    }
+    css(k('a1'), { transform: `scale(${(1 - .05 * press(t, T.agendar)).toFixed(3)})` });
+    css(k('a2'), { transform: `scale(${(1 - .05 * press(t, T.cheguei)).toFixed(3)})` });
+    css(k('a3'), { transform: `scale(${(1 - .05 * press(t, T.orc)).toFixed(3)})` });
+    css(k('a4'), { transform: `scale(${(1 - .05 * press(t, T.gerar)).toFixed(3)})` });
+    const ag = seg(t, T.conf, T.conf + .4);
+    css(k('agL'), { opacity: ag.toFixed(3) }); css(k('agV'), { opacity: ag.toFixed(3) });
+    const open = seg(t, T.agendar + .1, T.agendar + .45) * (1 - seg(t, T.conf + .05, T.conf + .4, E.inOut));
+    css(k('sheet'), { transform: `translateY(${((1 - open) * 105).toFixed(2)}%)`, visibility: open > 0 ? 'visible' : 'hidden' });
+    vis(k('scrim'), open * .55);
+    type(k('fDate'), '14/10/2026', t, 6.8, 7.1);
+    type(k('fHora'), '14:00', t, 7.15, 7.35);
+    const pa = t > T.paulo - .02;
+    css(k('tecPaulo'), { background: pa ? '#0A9E64' : 'transparent', borderColor: pa ? '#0A9E64' : '#2A2F37', color: pa ? '#fff' : '#E4E7EC', transform: `scale(${(1 - .08 * press(t, T.paulo)).toFixed(3)})` });
+    css(k('btnConf'), { transform: `scale(${(1 - .05 * press(t, T.conf)).toFixed(3)})` });
+
+    scene(k('s5'), t, [[T.orc + .2, T.assinar + .35]]);
+    [11.0, 11.5, 12.0].forEach((a, i) => {
+      const p = seg(t, a, a + .35);
+      css(k('i' + (i + 1)), { opacity: p.toFixed(3), transform: `translateY(${((1 - p) * .6).toFixed(3)}rem)` });
+    });
+    txt(k('total'), brl(380 * seg(t, 11.0, 11.4, E.inOut) + 150 * seg(t, 11.5, 11.9, E.inOut) + 42 * seg(t, 12.0, 12.4, E.inOut)));
+    css(k('hint'), { opacity: seg(t, 12.4, 12.8).toFixed(3) });
+    css(k('btnAssinar'), { transform: `scale(${(1 - .05 * press(t, T.assinar)).toFixed(3)})` });
+
+    scene(k('s6'), t, [[T.assinar + .2, T.aceite + .55]]);
+    const sig = k('sig'), L = sig.__L || (sig.__L = sig.getTotalLength());
+    const sp = seg(t, 13.65, 14.7, E.inOut);
+    css(sig, { strokeDasharray: L.toFixed(1), strokeDashoffset: (L * (1 - sp)).toFixed(1) });
+    css(k('sigPh'), { opacity: (1 - seg(t, 13.6, 13.8)).toFixed(3) });
+    css(k('sigName'), { opacity: seg(t, 14.7, 15.0).toFixed(3) });
+    css(k('btnAceite'), { transform: `scale(${(1 - .05 * press(t, T.aceite)).toFixed(3)})` });
+
+    scene(k('s8'), t, [[T.gerar + 1.3, D - .02]]);
+    [18.55, 18.85, 19.15].forEach((a, i) => {
+      const p = seg(t, a, a + .35);
+      css(k('p' + (i + 1)), { opacity: p.toFixed(3), transform: `translateX(${((1 - p) * .8).toFixed(3)}rem)` });
+    });
+
+    U.toast(t, [
+      [T.conf + .1, T.cheguei - .3, 'Atendimento agendado'],
+      [T.cheguei + .1, T.orc + .1, 'Chegada registrada'],
+      [T.aceite + .08, T.aceite + 1.1, 'Orçamento aceito pelo cliente'],
+      [T.gerar + .1, T.gerar + 1.3, 'Atendimento virou O.S. Continue pela O.S.']
+    ]);
+
+    const svg = k('sigSvg');
+    const sigPt = p => () => U.svgPt(svg, sig, p, 300, 100);
+    const P = [
+      { t: 0, at: [.72, .95] }, { t: T.servico - .1, k: 'tile1' }, { t: 2.9, at: [.82, .9] },
+      { t: T.alta - .1, k: 'u3' }, { t: T.abrir - .1, k: 'btnAbrir' }, { t: T.agendar - .1, k: 'a1' },
+      { t: T.paulo - .1, k: 'tecPaulo' }, { t: T.conf - .1, k: 'btnConf' }, { t: T.cheguei - .1, k: 'a2' },
+      { t: T.orc - .1, k: 'a3' }, { t: 11.4, at: [.84, .84] }, { t: T.assinar - .1, k: 'btnAssinar' },
+      { t: 13.6, fn: sigPt(0) }, { t: 14.72, fn: sigPt(1) }, { t: T.aceite - .1, k: 'btnAceite' },
+      { t: T.gerar - .1, k: 'a4' }, { t: 17.8, at: [.82, .9] }
+    ];
+    const drawing = t >= 13.65 && t <= 14.7;
+    const o = seg(t, .7, 1.0) * (1 - seg(t, D - .9, D - .5));
+    U.finger(t, P, Object.values(T), o, drawing ? sigPt(sp)() : null, drawing ? .5 : 0);
+  }
+  window.GoDemo.start({ root: document.querySelector('[data-demo="sgo"]'), duration: 21.5, still: 9.3, frame: frame });
+})();
+</script>
+</body>
+</html>

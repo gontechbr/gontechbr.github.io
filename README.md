@@ -37,6 +37,8 @@ cgo/index.html       página da Calibração Guiada
 css/styles.css       cores, fontes e layout do site (cores da marca no começo do arquivo)
 css/produto.css      layout das páginas de produto e a cor e as fontes de cada app
 js/abertura.js       animação de abertura da página inicial
+js/go-demo-engine.js motor das demonstrações animadas (feito no Claude Design)
+sgo/demo.html, gqb/demo.html, cgo/demo.html   demonstrações animadas de cada produto
 js/main.js           ano do rodapé
 assets/produtos/     logos e ícones dos produtos, copiados dos repos de cada app
 favicon.ico, favicon-32.png, apple-touch-icon.png, icon-192.png, icon-512.png
@@ -60,6 +62,29 @@ vieram do CSS de cada app:
 As telas no topo de cada página são ilustrações em HTML e CSS, não capturas. Os textos e números
 nelas são de exemplo e a legenda diz isso. Os textos das funções foram tirados do código e do README
 de cada app: só entra o que já tem tela. Ao mudar um app, revise a página dele.
+
+## Demonstrações animadas
+
+Cada página de produto tem, logo abaixo do topo, a faixa "Veja o ... em uso" com a demonstração
+animada do app num iframe (`demo.html` na pasta do produto). As animações foram feitas no Claude
+Design (projeto com `Demo SGO.dc.html`, `Demo GQB.dc.html` e `Demo CGO.dc.html`) a partir dos roteiros
+em `C:	emp\Go\claude-design\`. Aqui elas foram só convertidas para HTML puro: saiu o runtime de
+componentes do Claude Design (que depende de React) e o quadro chama `js/go-demo-engine.js` direto.
+Marcação, cores e tempos são os do Claude Design. Para mudar a animação, mude lá e converta de novo.
+
+- A própria demonstração tem o botão "Pausar" e, para quem pede menos movimento no sistema, mostra uma
+  cena parada.
+- `js/main.js` manda `{ goDemo: 'pause' }` para o iframe quando ele sai da tela e `{ goDemo: 'play' }`
+  quando volta. Se a pessoa pausou pelo botão, a página não retoma.
+- A altura do iframe fica em `.p-demo-frame` (`css/produto.css`). Abaixo de uns 460 px de altura, as
+  folhas que sobem do rodapé da demonstração (como "Agendar visita" no SGO) ficam cortadas.
+
+## Logos do GQB e do CGO
+
+Os dois agora são só letra, como na prancha do Claude Design: Barlow Condensed ExtraBold, com o Q do
+GQB em âmbar `#E8A317` e o G do CGO em laranja `#E8601C`. Os SVGs em `assets/produtos/` (`gqb-icone.svg`,
+`cgo-icone.svg`, `gqb-fundo-escuro.svg`, `cgo-fundo-escuro.svg`) foram gerados em curvas a partir da
+fonte, então não dependem dela carregar.
 
 ## Abertura
 
